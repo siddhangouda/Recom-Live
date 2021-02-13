@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+.container-fluid {
+    padding:0px !important;
+}
+
+.header {
+    padding: 40px;
+    color: #056969;
+    background: white;
+}
+
+.subheader {
+    padding: 20px;
+    color: #056969;
+}
+
+.gap {
+    padding: 30px;
+}
+
+.row {
+    margin-right: 0px !important;
+}
+
+i {
+    color:#056969;
+    
+}
+
+.nav-link:hover {
+    
+    i {
+        color:#15abea;
+      }
+}
+
+.nav-item {
+    padding-left: 20px;
+    font-size: 18px;
+    text-indent: 1px;
+    font-weight: 500;
+}
+
+.nav-link {
+    color:#192f4d !important;
+}
+
+p {
+     
+    text-align: justify;
+}
