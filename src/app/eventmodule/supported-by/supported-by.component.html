@@ -1,5 +1,24 @@
-<div class="col-sm-12 text-center">
-            
-    <h2 class="header"> Supported By </h2>
-    
+<div class="gap20"></div>
+<div class="row">
+	<div class="col-sm-12 text-center">
+	<h2 class="header1"> SUPPORTED BY </h2>
 </div>
+</div>
+
+
+<p-carousel [value]="supportedByData" styleClass="custom-carousel" [numVisible]="5" [numScroll]="1" [circular]="true"
+	[autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+	
+	<ng-template let-supportedByData pTemplate="item">
+		<div class="product-item">	
+			<div class="product-item-content">	
+				<div class="p-mb-3">
+					<img src= "{{supportedByData.vc_logo_link}}" width="180" >
+				</div>	
+			</div>
+		</div>
+		
+	</ng-template>
+</p-carousel>
+<div class="gap"></div>
+

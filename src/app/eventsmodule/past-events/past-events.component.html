@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1 class="header"> Past Events </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 module-border-wrap mt-3" *ngFor="let past of pastData">
+            <div class="img-container">
+                <img src="{{past.vc_backgroundImage}}" alt="Avatar" class="image" width="100%">
+                <div class="centered text-center">{{past.vc_event_title}}</div>
+                <div class="middle">
+                    <button type="button" class="btn btn-info"> Explore </button>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+</div>

@@ -17,48 +17,19 @@
         <p-tabView>
             <p-tabPanel header="Upcoming Events">
                 <div class="row">
-                    <div class="col-sm-4 module-border-wrap">
-                        <div class="img-container">
-                            <img src="http://api.events.recommerceeco.com/static/images/banners/Battery_Banner.jpg"
-                                alt="Avatar" class="image">
-                            <div class="centered text-center">Global Battery Recycling Conference</div>
-                            <div class="middle">
-                                <button type="button" class="btn btn-info"> Explore </button>
+                    <div class="col-sm-4 module-border-wrap" *ngFor="let upcoming of upcomingData">
+                      <div class="img-container">
+                            <img src="{{upcoming.vc_backgroundImage}}" alt="Avatar" class="image">
+                            <div class="centered text-center"> Global Battery Recycling Conference</div>
+                              <div class="middle">
+                                <button type="button" class="btn btn-info" (click)="goToEvent(upcoming.id)"> Explore </button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-sm-4">
-                        <div class="flip-box">
-                            <div class="flip-box-inner">
-                                <div class="flip-box-front">
-                                    <img src="http://api.events.recommerceeco.com/static/images/banners/Battery_Banner.jpg"
-                                        alt="Avatar" class="image">
-                                </div>
-                                <div class="flip-box-back">
-                                    <h2>Back Side</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="img-container">
-                            <img src="http://api.events.recommerceeco.com/static/images/banners/Battery_Banner.jpg"
-                                alt="Avatar" class="image">
-                            <div class="centered text-center">Global Battery Recycling Conference</div>
-                            <div class="middle">
-                                <button type="button" class="btn btn-info"> Explore </button>
-                            </div>
-                        </div>
-                    </div>
-
-
-
                 </div>
 
                 <div class="col-sm-12 text-center">
-                    <button type="button" class="btn btn-info mt-5"> View All Events </button>
+                    <button type="button" class="btn btn-info mt-5" (click)="goToEvents('upcoming')"> View All Events </button>
                 </div>
 
             </p-tabPanel>
@@ -72,41 +43,19 @@
 
             <p-tabPanel header="Past Events">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 module-border-wrap" *ngFor="let past of pastData">
                         <div class="img-container">
-                            <img src="http://api.events.recommerceeco.com/static/images/banners/Battery_Banner.jpg"
-                                alt="Avatar" class="image">
+                            <img src="{{past.vc_backgroundImage}}" alt="Avatar" class="image">
                             <div class="centered text-center">Global Battery Recycling Conference</div>
                             <div class="middle">
-                                <button type="button" class="btn btn-info"> Explore </button>
+                                <button type="button" class="btn btn-info" > Explore </button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-sm-4">
-                        <div class="img-container">
-                            <img src="http://api.events.recommerceeco.com/static/images/banners/Battery_Banner.jpg"
-                                alt="Avatar" class="image">
-                            <div class="centered text-center">Global Battery Recycling Conference</div>
-                            <div class="middle">
-                                <button type="button" class="btn btn-info"> Explore </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="img-container">
-                            <img src="http://api.events.recommerceeco.com/static/images/banners/Battery_Banner.jpg"
-                                alt="Avatar" class="image">
-                            <div class="centered text-center">Global Battery Recycling Conference</div>
-                            <div class="middle">
-                                <button type="button" class="btn btn-info"> Explore </button>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
                 <div class="col-sm-12 text-center">
-                    <button type="button" class="btn btn-info mt-5"> View All Events </button>
+                    <button type="button" class="btn btn-info mt-5" (click)="goToEvents('past')"> View All Events </button>
                 </div>
             </p-tabPanel>
 
@@ -115,6 +64,7 @@
 
 
     </div>
+    <div class="gap"></div>
 </div>
 <app-govt></app-govt>
 <app-aboutus></app-aboutus>

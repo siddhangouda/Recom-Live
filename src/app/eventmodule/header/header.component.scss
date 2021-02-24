@@ -4,7 +4,7 @@ color : #cdcdcd !important;
 
 }
 .nav-link {
-    color : #cdcdcd !important; 
+    color: #010101 !important 
 
 }
 .nav-item {
@@ -15,3 +15,54 @@ img {
     width: 100%;
     height: auto;
   }
+
+  .scrollbar{
+      background:#9f9f9fa6;
+      color: white;
+  }
+
+  :host ::ng-deep .p-button {
+    margin: 0 .5rem 0 0;
+    min-width: 10rem;
+}
+
+p {
+    margin: 0;
+}
+
+.confirmation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:host ::ng-deep .p-dialog .p-button {
+    min-width: 6rem;
+}
+
+input {
+
+    margin-top: 20px;
+}
+
+.btn {
+    margin: 10px;
+    background-color: #056969bf;
+}
+.header {
+    padding: 20px 40px 40px 40px;
+    color: #050d69c4;
+    background: #ffffff21;
+    font-weight: 600;
+    font-size: 39px;
+}
+
+
+
+i {
+    font-size: 25px;
+    color: #050d69c4;
+}
+.blue {
+    color :#050d69c4
+}

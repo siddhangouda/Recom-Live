@@ -7,6 +7,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeModule } from './home/home.module';
 import { EventmoduleModule } from './eventmodule/eventmodule.module';
+import { GalleryModule } from './gallery/gallery.module'
+import { EventsmoduleModule} from './eventsmodule/eventsmodule.module'
+import { RegistrationModule } from './registration/registration.module';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
+
 
 
 @NgModule({
@@ -14,14 +20,18 @@ import { EventmoduleModule } from './eventmodule/eventmodule.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
     HomeModule,
-    EventmoduleModule
+    EventmoduleModule,
+    GalleryModule,
+    EventsmoduleModule,
+    RegistrationModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

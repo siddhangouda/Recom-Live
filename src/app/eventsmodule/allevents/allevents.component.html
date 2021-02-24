@@ -1,0 +1,20 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 text-right mt-3 mb-1 mx-1">
+         <button pButton type="button" label="View all Events" class="p-button-primary p-button-outlined" (click)='showAll()'></button>
+        </div>
+    </div>
+
+    <div class="container-fluid" *ngIf = "upComing">
+    <app-upcoming-events></app-upcoming-events>
+    </div>
+
+    <div class="container-fluid" *ngIf = "past">
+    <app-past-events></app-past-events>
+    </div>
+
+    <app-gallery-grid></app-gallery-grid>
+
+
+</div>

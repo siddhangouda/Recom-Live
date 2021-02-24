@@ -1,0 +1,19 @@
+
+<div class="gap"></div>
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <h2 class="header1"> OUR PARTNER </h2>
+    </div>
+</div>
+
+<div class="gap"></div>
+
+<div class="row">
+<div class="col-sm-2 " *ngFor="let partner of ourPartnersData">
+
+    <div class="card ">
+        <img class="card-img-top ml-3 mt-3" src="{{partner.vc_partner_logo_link}}" alt="Card image cap" (click)="showDialog()" style="width:90%;">
+     </div>
+</div>
+</div>
+

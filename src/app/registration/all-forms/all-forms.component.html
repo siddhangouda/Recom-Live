@@ -1,0 +1,62 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h3 class="header">Online Registration</h3>
+        </div>
+    </div>
+<div class="gap"></div>
+    <!-- form selection  -->
+    <div class="row text-center">
+        <div class="col-sm-2 text-center" *ngIf="partnership">
+            <button pButton type="button" class="p-button-raised" label="Partnership"
+                (click)="selectPartnership()"></button>
+        </div>
+        <div class="col-sm-2" *ngIf="exhibition">
+            <button pButton type="button" class="p-button-raised" label="Exhibition"
+                (click)="selectExhibition()"></button>
+        </div>
+        <div class="col-sm-2" *ngIf="conference">
+            <button pButton type="button" class="p-button-raised" label="Coference"
+                (click)="selectCoference()"></button>
+        </div>
+        <div class="col-sm-2" *ngIf="visitor">
+            <button pButton type="button" class="p-button-raised" label="Visitor" (click)="selectVisitor()"></button>
+        </div>
+        <div class="col-sm-2" *ngIf="vertual">
+            <button pButton type="button" class="p-button-raised p-button-warning" label="Register for Vertual" (click)="selectVertual()"></button>
+        </div>
+    
+    </div>
+    <!-- form selection  ends-->
+
+    <div class="gap"></div>
+
+    <div class="container formbg">
+        <div class="gap"></div>
+
+        <div class="container-fluid" *ngIf="partnershipForm">
+            <app-partnership></app-partnership>
+        </div>
+
+        <div class="container-fluid" *ngIf="exhibitionForm">
+            <app-exhibition></app-exhibition>
+        </div>
+
+        <div class="container-fluid" *ngIf="conferenceForm">
+            <app-coference></app-coference>
+        </div>
+
+        <div class="container-fluid" *ngIf="visitorForm">
+            <app-visitor></app-visitor>
+        </div>
+
+        <div class="container-fluid" *ngIf="vertualForm">
+        <app-vertual></app-vertual>
+    </div>
+
+        <div class="gap"></div>
+
+    </div>
+
+</div>

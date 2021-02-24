@@ -1,27 +1,18 @@
-<div class="container">
+<div class="container-fluid bg-light">
     <div class="row">
         <div class="col-sm-12 text-center">
             
-            <h2 class="header">Government and Associations<br> We Worked With</h2>
+            <h2 class="header" style="background: #f8f9fa!important;">Government and Associations<br> We Worked With</h2>
             
         </div>
     </div>
-
+    <div class="gap"></div>
+<div class="container">
     <div class="row" >
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
+        <div class="col-sm-15" *ngFor="let association of associationData">
+            <img src="{{association.vc_img_url}}" width="80%" class="ml-2">
+        </div>
+      
     </div>
+</div>
 </div>
