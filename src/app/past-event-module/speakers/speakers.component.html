@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <h4 class="Pastheader"> SPEAKERS & PANELISTS </h4>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-2 " *ngFor="let speaker of speakersData index as i" >
+        <div class="card ">
+           <img class="card-img-top ml-3 mt-3" src="{{speaker.vc_img_link}}" alt="Card image cap" style="width: 80%;"  (click)="showDialog(i)" >
+           <div class="overlay"> <i style="color: white; font-size: 30px;" class="pi pi-youtube" (click)="showVideo(i)" ></i></div>
+           <div class="card-body text-center ">
+                <div class="f15" style="height: 50px;" > {{speaker.vc_speaker_name}} </div>
+                <div class="f12" style="height: 35px;"> {{speaker.vc_designation}} </div>     
+            </div>
+            </div>            
+    </div>
+</div>
+
+<div class="gap"></div>
+
+<p-dialog header="{{name}}" [(visible)]="display" [style]="{width: '70vw'}">
+    <div class="row">
+        <div class="col-sm-6"><img class="card-img-top ml-3 mt-3" src="{{img}}" alt="Card image cap" style="width: 50%;"></div>
+        <div class="col-sm-6">
+    <div class="" > {{name}} </div>
+    <div class=""> {{discription}} </div>
+    {{about}}
+</div>
+</div>
+</p-dialog>
+
+<p-dialog header="{{name}}" [(visible)]="videoStatus" [style]="{width: '70vw'}">
+    
+    <iframe width="800"  height="400" [src]="sanitized(video)" frameborder="0" ></iframe>
+    
+</p-dialog>

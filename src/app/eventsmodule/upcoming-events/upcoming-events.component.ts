@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RestApiService } from 'src/app/shared/rest-api.service'
 
 @Component({
@@ -9,15 +10,23 @@ import { RestApiService } from 'src/app/shared/rest-api.service'
 export class UpcomingEventsComponent implements OnInit {
 
   upcomingData :any;
-
-  constructor(private restApi : RestApiService) { }
+  encodedId :any;
+  constructor(private restApi : RestApiService,
+              private router :Router) { }
 
   ngOnInit(): void {
 
     this.restApi.getList('date_filter/upcomingall/').subscribe(responce =>{
       this.upcomingData = responce;
-      console.log(this.upcomingData = this.upcomingData.upcoming_events);
+      console.log(this.upcomingData = this.upcomingData.upcoming_events_all);
     })
   }
+
+  goToEvent(id){
+    this.encodedId = id;
+    console.log("encode", btoa(this.encodedId));
+    this.router.navigate(['/events'], { queryParams: { redierectTo: btoa(this.encodedId) } });
+  }
+
 
 }

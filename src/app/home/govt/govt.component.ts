@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestApiService } from 'src/app/shared/rest-api.service';
+import AOS from 'aos'
 
 @Component({
   selector: 'app-govt',
@@ -20,6 +21,8 @@ export class GovtComponent implements OnInit {
       this.associationData = responce.associations;
       console.log(this.associationData);
     })
+
+    AOS.init();
 
   }
 

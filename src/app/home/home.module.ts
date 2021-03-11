@@ -6,6 +6,8 @@ import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import { GovtComponent } from './govt/govt.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { SharedModule } from '../shared/shared.module';
+import { NgAnimatedCounterModule } from '@bugsplat/ng-animated-counter';
 
 
 @NgModule({
@@ -15,6 +17,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     TabViewModule,
     CardModule,
     ButtonModule,
+    SharedModule,
+    NgAnimatedCounterModule 
   ]
 })
 export class HomeModule { }

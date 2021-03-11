@@ -1,8 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+@font-face {
+    font-family: lato;
+    src: url(./assets/font/ITCAvantGardeStdBk.otf) format("opentype");
+  }
+
+  * {
+    scroll-behavior: smooth;
+    font-family: 'ITCAvantGardeStdBk', 'arial', sans-serif;
+  }
+
+
 .container-fluid {
     padding:0px !important;
 }
+
 
 .header {
     padding-top: 40px;
@@ -12,11 +25,9 @@
 }
 
 .header1{
-    color: #1a1b1f;
+    color: #156d95;
     font-weight: 600;
     margin-left: -15px;
-    padding-bottom: 10px;
-    font-size: 22px;
     }
 
 .subheader {
@@ -31,6 +42,9 @@
 .gap20 {
     padding: 15px;
 }
+.gap10 {
+    padding: 4px;
+}
 
 .row {
     margin-right: 0px !important;
@@ -39,6 +53,10 @@
 i {
     color:#056969;
     
+}
+
+.navbar {
+    padding : 0px !important;
 }
 
 .nav-link:hover {
@@ -50,9 +68,9 @@ i {
 
 .nav-item {
     padding-left: 20px;
-    font-size: 18px;
+    font-size: 15px;
     text-indent: 1px;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .nav-link {
@@ -80,6 +98,25 @@ p {
     color: white;
 }
 
+.f20 {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+
+.f25 {
+    font-weight: 500;
+    font-size: 23px;
+    color: white;
+}
+
+.col-sm-15 {
+    border: 1px solid #e7e7e77d;
+    margin: 14px;
+    max-width: 10%;
+}
+
+
 .form-control-feedback { color: rgb(168, 31, 31);
     margin-left: 50px;
     font-size: 15px;
@@ -100,8 +137,165 @@ p {
   }
 
   .aboutheader{
-    color: rgb(39, 3, 3);
+    color: #162e50;
     padding: 20px;
     font-weight: 700;
     padding-top: 50px;
 }
+
+a {
+    cursor: pointer;
+}
+.white { 
+    color: white;
+}
+
+.colormain{
+    color: #162e50;
+}
+
+#loader {
+    bottom: 0;
+    height: 175px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 175px;
+  }
+  
+  #loader {
+    bottom: 0;
+    height: 175px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 175px;
+  }
+  
+  #loader .dot {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 87.5px;
+  }
+  
+  #loader .dot::before {
+    border-radius: 100%;
+    content: "";
+    height: 87.5px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(0);
+    width: 87.5px;
+  }
+  
+  #loader .dot:nth-child(7n+1) {
+    transform: rotate(45deg);
+  }
+  
+  #loader .dot:nth-child(7n+1)::before {
+    animation: 0.8s linear 0.1s normal none infinite running load;
+    background: #00ff80 none repeat scroll 0 0;
+  }
+  
+  #loader .dot:nth-child(7n+2) {
+    transform: rotate(90deg);
+  }
+  
+  #loader .dot:nth-child(7n+2)::before {
+    animation: 0.8s linear 0.2s normal none infinite running load;
+    background: #00ffea none repeat scroll 0 0;
+  }
+  
+  #loader .dot:nth-child(7n+3) {
+    transform: rotate(135deg);
+  }
+  
+  #loader .dot:nth-child(7n+3)::before {
+    animation: 0.8s linear 0.3s normal none infinite running load;
+    background: #00aaff none repeat scroll 0 0;
+  }
+  
+  #loader .dot:nth-child(7n+4) {
+    transform: rotate(180deg);
+  }
+  
+  #loader .dot:nth-child(7n+4)::before {
+    animation: 0.8s linear 0.4s normal none infinite running load;
+    background: #0040ff none repeat scroll 0 0;
+  }
+  
+  #loader .dot:nth-child(7n+5) {
+    transform: rotate(225deg);
+  }
+  
+  #loader .dot:nth-child(7n+5)::before {
+    animation: 0.8s linear 0.5s normal none infinite running load;
+    background: #2a00ff none repeat scroll 0 0;
+  }
+  
+  #loader .dot:nth-child(7n+6) {
+    transform: rotate(270deg);
+  }
+  
+  #loader .dot:nth-child(7n+6)::before {
+    animation: 0.8s linear 0.6s normal none infinite running load;
+    background: #9500ff none repeat scroll 0 0;
+  }
+  
+  #loader .dot:nth-child(7n+7) {
+    transform: rotate(315deg);
+  }
+  
+  #loader .dot:nth-child(7n+7)::before {
+    animation: 0.8s linear 0.7s normal none infinite running load;
+    background: magenta none repeat scroll 0 0;
+  }
+  
+  #loader .dot:nth-child(7n+8) {
+    transform: rotate(360deg);
+  }
+  
+  #loader .dot:nth-child(7n+8)::before {
+    animation: 0.8s linear 0.8s normal none infinite running load;
+    background: #ff0095 none repeat scroll 0 0;
+  }
+  
+  #loader .loading {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    bottom: -40px;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 180px;
+  }
+  
+  @keyframes load {
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes load {
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+  
+  .spinner-message {
+    text-align: center;
+  }

@@ -1,5 +1,20 @@
 <div class="row">
     <div class="col-sm-12 text-center">
-        <h2 class="header1"> MEDIA PARTNERS </h2>
+        <h4 class="header1"> MEDIA PARTNERS </h4>
     </div>
 </div>
+
+<p-carousel [value]="mediaData" styleClass="custom-carousel" [numVisible]="5" [numScroll]="1" [circular]="true"
+	[autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+	
+	<ng-template let-mediaData pTemplate="item">
+		<div class="product-item">	
+			<div class="product-item-content">	
+				<div class="p-mb-3">
+				<a href="{{mediaData.vc_company_url}}" target="blank" rel="nofollow">	<img src= "{{mediaData.vc_logo_link}}" width="180" ></a>
+				</div>	
+			</div>
+		</div>
+		
+	</ng-template>
+</p-carousel>

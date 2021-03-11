@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { RestApiService } from 'src/app/shared/rest-api.service';
 import { forkJoin } from 'rxjs'
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 
 
@@ -19,13 +20,15 @@ export class EventsComponent implements OnInit {
   encodedId:any;
 
   constructor(private restApi: RestApiService,
-              private router : Router) {
+              private router : Router,
+              @Inject(DOCUMENT) private _document: Document) {
 
     this.upcomingAPI = this.restApi.getList('date_filter/upcoming3/');
     this.pastAPI = this.restApi.getList('date_filter/past3/');
   }
 
   ngOnInit(): void {
+
 
     forkJoin([this.upcomingAPI, this.pastAPI]).subscribe(responce => {
       this.upcomingData = responce[0];
@@ -45,8 +48,15 @@ export class EventsComponent implements OnInit {
   goToEvent(id){
     this.encodedId = id;
     console.log("encode", btoa(this.encodedId));
-    this.router.navigate(['/events'], { queryParams: { id: btoa(this.encodedId) } });
+    this.router.navigate(['/events'], { queryParams: { redierectTo: btoa(this.encodedId) } });
   }
+
+  goToPastEvent(id){
+    this.encodedId = id;
+    console.log("encode", btoa(this.encodedId));
+    this.router.navigate(['/past-event-module'], { queryParams: { redierectTo: btoa(this.encodedId) } });
+  }
+
 
 
 }

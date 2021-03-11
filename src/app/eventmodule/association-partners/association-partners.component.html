@@ -1,6 +1,19 @@
 
 <div class="row">
     <div class="col-sm-12 text-center">
-        <h2 class="header1"> ASSOCIATION PARTNERS </h2>
+        <h4 class="header1"> ASSOCIATION PARTNERS </h4>
     </div>
 </div>
+
+
+<div class="gap"></div>
+
+<div class="row">
+<div class="col-sm-15 " *ngFor="let partner of associationsData" >
+
+    <div class="card ">
+        <a href="{{partner.vc_link}}" target="blank" rel="nofollow">  <img class="card-img-top ml-3 mt-3" src="{{partner.vc_img_url}}" alt="Card image cap" style="width:90%;"></a>
+     </div>
+</div>
+</div>
+

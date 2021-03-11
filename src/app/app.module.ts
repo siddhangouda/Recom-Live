@@ -12,7 +12,10 @@ import { EventsmoduleModule} from './eventsmodule/eventsmodule.module'
 import { RegistrationModule } from './registration/registration.module';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
-
+import { AboutModule } from './about/about.module';
+import { PastEventModuleModule } from './past-event-module/past-event-module.module';
+import { SharedModule } from './shared/shared.module';
+import {ScrollTopModule} from 'primeng/scrolltop';
 
 
 @NgModule({
@@ -31,9 +34,13 @@ import {HttpClientModule} from '@angular/common/http'
     EventsmoduleModule,
     RegistrationModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AboutModule,
+    // PastEventModuleModule,
+    SharedModule,ScrollTopModule
+ 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

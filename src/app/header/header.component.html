@@ -2,15 +2,15 @@
     <div class="row">
 
         <!-- bootstrap navigation bar -->
-        <nav class=" animate__animated animate__bounceInUp navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 
             <div class="col-sm-2">
                 <div class="navbar-brand">
-                    <img class="img-fluid" src="./assets/images/recommercelogo.gif" />
+                <a routerLink="/index">    <img class="img-fluid" src="./assets/images/recommercelogo.png" /></a> 
                 </div>
             </div>
 
-            <div class="col-sm-5"></div>
+            <div class="col-sm-6"></div>
 
             <div class="col-sm-5 text-right">                
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -22,16 +22,16 @@
                     
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item ">
-                            <a class="nav-link"> Home </a>
+                            <a class="nav-link" routerLink="/index" > Home </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">  Gallery </a>
+                            <a class="nav-link" routerLink="/gallery">  Gallery </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">  About Us </a>
+                            <a class="nav-link" routerLink="/aboutUs">  About Us </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"> Contact Us </a>
+                            <a class="nav-link" (click)="scroll()"> Contact Us </a>
                         </li>
                     </ul>
 
@@ -41,6 +41,8 @@
     </div>
 </div>
 
-<div class="gap"></div>
-
-
+<div class="gap10"></div>
+<div class="gap10"></div>
+<div class="gap10"></div>
+<div class="gap10"></div>
+<div class="gap10"></div><div class="gap10"></div><div class="gap10"></div>

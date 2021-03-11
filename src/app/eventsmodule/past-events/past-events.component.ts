@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RestApiService } from 'src/app/shared/rest-api.service'
 
 @Component({
@@ -9,15 +10,23 @@ import { RestApiService } from 'src/app/shared/rest-api.service'
 export class PastEventsComponent implements OnInit {
 
   pastData :any;
+  encodedId: any;
 
-  constructor(private restApi : RestApiService) { }
+  constructor(private restApi : RestApiService,
+              private router :Router) { }
 
   ngOnInit(): void {
 
     this.restApi.getList('date_filter/pastall/').subscribe(responce =>{
       this.pastData = responce;
-      console.log(this.pastData = this.pastData.past_events);
+      console.log(this.pastData = this.pastData.past_events_all);
     })
+  }
+
+  goToPastEvent(id){
+    this.encodedId = id;
+    console.log("encode", btoa(this.encodedId));
+    this.router.navigate(['/pastEvent'], { queryParams: { redierectTo: btoa(this.encodedId) } });
   }
 
 }

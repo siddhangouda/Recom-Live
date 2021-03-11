@@ -1,3 +1,7 @@
+.row  {
+  margin-left: 0px !important; 
+}
+
 .customrow {
     display: -ms-flexbox; /* IE10 */
     display: flex;
@@ -36,4 +40,17 @@
       flex: 100%;
       max-width: 100%;
     }
+  }
+
+  .zoom {
+    
+    transition: transform .2s; /* Animation */
+    
+    margin: 0 auto;
+  }
+
+  .zoom:hover {
+    position: relative;
+    z-index: 1;
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }

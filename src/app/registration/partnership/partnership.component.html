@@ -1,4 +1,5 @@
-<div class="col-sm-12">
+<div class="col-sm-12" style="background: #f2f2f2;">
+    <div class="gap">
     <form #partnership='ngForm' (ngSubmit) ="partnershipData(partnership.value); partnership.reset()">
         <div class="form-row">
 
@@ -174,7 +175,7 @@
         </div>
 
         <div class="col my-3">
-            <input class="form-control" rows="2" placeholder="Purpose of Registration" name="register_for" value=1 [(ngModel)]="for" ngModel hidden>
+            <input class="form-control" rows="2" placeholder="register_for" name="register_for" value={{id}} [(ngModel)]="id" ngModel hidden>
         </div>
 
 

@@ -31,6 +31,6 @@ export class SupportedByComponent implements OnInit {
 	}
 
   ngOnInit() {
-      console.log("supportedby", this.supportedByData)
+      
     }
 }

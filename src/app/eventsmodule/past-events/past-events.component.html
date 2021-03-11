@@ -9,9 +9,9 @@
         <div class="col-sm-4 module-border-wrap mt-3" *ngFor="let past of pastData">
             <div class="img-container">
                 <img src="{{past.vc_backgroundImage}}" alt="Avatar" class="image" width="100%">
-                <div class="centered text-center">{{past.vc_event_title}}</div>
+                <div class="centered text-center"></div>
                 <div class="middle">
-                    <button type="button" class="btn btn-info"> Explore </button>
+                    <button type="button" class="btn btn-info" (click)="goToPastEvent(past.id)"> Explore </button>
                 </div>
             </div>
         </div>

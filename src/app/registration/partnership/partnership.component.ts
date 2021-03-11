@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RestApiService } from 'src/app/shared/rest-api.service';
 
 @Component({
@@ -8,6 +8,9 @@ import { RestApiService } from 'src/app/shared/rest-api.service';
 })
 export class PartnershipComponent implements OnInit {
 
+
+  @Input() id:any
+
   firstName:any;
   lastName:any;
   companyName:any;
@@ -16,7 +19,6 @@ export class PartnershipComponent implements OnInit {
   phone:any;
   city:any;
   state:any;
-  for:any=1
 
   constructor(private restAPI: RestApiService)  { }
 

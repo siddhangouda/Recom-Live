@@ -8,13 +8,14 @@ import { VisitorComponent } from './visitor/visitor.component';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { VertualComponent } from './vertual/vertual.component';
+import {DialogModule} from 'primeng/dialog';
 
 
 
 @NgModule({
   declarations: [AllFormsComponent, PartnershipComponent, ExhibitionComponent, CoferenceComponent, VisitorComponent, VertualComponent],
   imports: [
-    CommonModule,ButtonModule,FormsModule
+    CommonModule,ButtonModule,FormsModule,DialogModule
   ]
 })
 export class RegistrationModule { }

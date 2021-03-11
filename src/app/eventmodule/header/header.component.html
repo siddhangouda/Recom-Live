@@ -1,224 +1,254 @@
-<div class="container-fluid" *ngFor="let eventData of eventData">
+<div class="container-fluid">
 
-  <div class="row scrollbar">
-    <marquee behavior="scroll" direction="left">Here is some scrolling text... right to left!</marquee>
-  </div>
-
-  <div class="row " [ngStyle]="{ 'background-image': 'url(' +eventData.vc_backgroundImage+ ')' ,'background-size' : 'cover' }">
-
-    <div class="col-sm-7 ">
-      <div class="gap"></div>
-      
-      <h1 class="header text-left ml-4"> {{eventData.vc_event_title | uppercase }}</h1>
-      <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-map-marker"></i> {{eventData.vc_event_location}}</h5>
-      <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-calendar-plus"></i> {{eventData.vc_event_location}}</h5>
-      <div class="gap"></div>
-      <div class="gap"></div>
+  <div *ngFor="let eventData of eventData">
+    <div class="row scrollbar">
+      <marquee behavior="scroll" direction="left">Here is some scrolling text... right to left!</marquee>
     </div>
 
-    <div class="gap mt-5"></div>
-    <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-10">
-        <nav class="navbar navbar-expand-lg navbar-light bg-drak">
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <p-button (click)="showPositionDialog('top','Agenda')" icon="pi pi-arrow-down" label="Agenda"
-                  styleClass="p-button-raised"></p-button>
-              </li>
-  
-  
-              <li class="nav-item">
-                <p-button (click)="showPositionDialog('top','Brochure')" icon="pi pi-arrow-down" label="Brochure"
-                  styleClass="p-button-raised"></p-button>
-              </li>
-              <li class="nav-item">
-                <p-button (click)="showPositionDialog('top','Floor_Plan')" icon="pi pi-arrow-down" label="Floor Plan"
-                  styleClass="p-button-raised"></p-button>
-              </li>
-              <li class="nav-item">
-              <p-button label="Register Now" styleClass="p-button-warning" (click)="goToRegister()"></p-button>
-  
-              </li>
-  
-            </ul>
-          </div>
-        </nav>
+    <div class="row"
+      [ngStyle]="{ 'background-image': 'url(' +eventData.vc_eventBanner+ ')' ,'background-size' : 'cover' }">
+
+      <div class="col-sm-7 ">
+        <div class="gap"></div>
+
+        <h3 class="header text-left ml-4"> {{eventData.vc_main_title | uppercase }}</h3>
+        <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-map-marker"></i> {{eventData.vc_event_location}}</h5>
+        <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-calendar-plus"></i> {{eventData.vc_event_location}}
+        </h5>
+        <div class="gap"></div>
+        <div class="gap"></div>
       </div>
+
+      <div class="gap mt-5"></div>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+          <nav class="navbar navbar-expand-lg navbar-light bg-drak">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <p-button (click)="showPositionDialog('top','Agenda')" icon="pi pi-arrow-down" label="Agenda"
+                    styleClass="p-button-raised"></p-button>
+                </li>
+
+
+                <li class="nav-item">
+                  <p-button (click)="showPositionDialog('top','Brochure')" icon="pi pi-arrow-down" label="Brochure"
+                    styleClass="p-button-raised"></p-button>
+                </li>
+                <li class="nav-item">
+                  <p-button (click)="showPositionDialog('top','Floor_Plan')" icon="pi pi-arrow-down" label="Floor Plan"
+                    styleClass="p-button-raised"></p-button>
+                </li>
+                <li class="nav-item">
+                  <p-button label="Register Now" styleClass="p-button-warning" (click)="goToRegister(eventData.id)">
+                  </p-button>
+
+                </li>
+
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+
     </div>
 
+
+
+    <!-- pop-up form  -->
+
+    <p-dialog header="Contact Details" [(visible)]="displayPosition" [position]="position" [modal]="true"
+      [style]="{width: '60vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+
+      <div class="container" style="background: white;">
+        <form #contactDetails="ngForm">
+          <div class="row">
+            <!-- firstName validator  -->
+            <div class="col">
+              <input type="text" class="form-control" placeholder="First name" name="firstName" [(ngModel)]="firstName"
+                #firstNameValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
+
+              <div class="form-control-feedback" *ngIf="firstNameValidator.invalid && firstNameValidator.touched">
+                <div *ngIf="firstNameValidator.errors.required">
+                  *This field is required.
+                </div>
+                <div *ngIf="firstNameValidator.errors.minlength">
+                  *Name must be at least 3 characters long.
+                </div>
+                <div *ngIf="firstNameValidator.errors.pattern">
+                  *Only characters are allowed
+                </div>
+              </div>
+            </div>
+
+            <!-- last name validator  -->
+
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Last name" name="lastName" [(ngModel)]="lastName"
+                #lastNameValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
+
+              <div class="form-control-feedback" *ngIf="lastNameValidator.invalid && lastNameValidator.touched">
+                <div *ngIf="lastNameValidator.errors.required">
+                  *This field is required.
+                </div>
+                <div *ngIf="lastNameValidator.errors.minlength">
+                  *Must be at least 3 characters long.
+                </div>
+                <div *ngIf="lastNameValidator.errors.pattern">
+                  *Only characters are allowed
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <!-- email field validator  -->
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="email"
+                #emailValidator="ngModel" required minlength="5" maxlength="30" email>
+
+              <div class="form-control-feedback" *ngIf="emailValidator.invalid && emailValidator.touched">
+                <div *ngIf="emailValidator.errors.required">
+                  *This field is required.
+                </div>
+                <div *ngIf="emailValidator.errors.minlength">
+                  *Must be at least 5 characters long.
+                </div>
+                <div *ngIf="emailValidator.errors.email">
+                  *email should be like @companyName.com
+                </div>
+              </div>
+            </div>
+            <!-- phone validator -->
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Phone Number" name="phone" [(ngModel)]="phone"
+                #phoneValidator="ngModel" required minlength="10" maxlength="10" pattern="[0-9]{1,10}">
+
+              <div class="form-control-feedback" *ngIf="phoneValidator.invalid && phoneValidator.touched">
+                <div *ngIf="phoneValidator.errors.required">
+                  *This field is required.
+                </div>
+                <div *ngIf="phoneValidator.errors.minlength">
+                  *Must have 10 Digits long.
+                </div>
+                <div *ngIf="phoneValidator.errors.pattern">
+                  *Only Numbers are allowed
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <!-- designation validator  -->
+
+
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Designation" name="designation"
+                [(ngModel)]="designation" #designationValidator="ngModel" required minlength="3" maxlength="20"
+                pattern="[a-zA-Z 0-9]{1,20}">
+
+              <div class="form-control-feedback" *ngIf="designationValidator.invalid && designationValidator.touched">
+                <div *ngIf="designationValidator.errors.required">
+                  *This field is required.
+                </div>
+                <div *ngIf="designationValidator.errors.minlength">
+                  *Must be at least 3 characters long.
+                </div>
+                <div *ngIf="designationValidator.errors.pattern">
+                  *Only characters are allowed
+                </div>
+              </div>
+            </div>
+
+            <!-- city validator -->
+            <div class="col">
+              <input type="text" class="form-control" placeholder="City" name="city" [(ngModel)]="city"
+                #cityValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
+
+              <div class="form-control-feedback" *ngIf="cityValidator.invalid && cityValidator.touched">
+
+                <div *ngIf="cityValidator.errors.required">
+                  *This field is required.
+                </div>
+                <div *ngIf="cityValidator.errors.minlength">
+                  *Name must be at least 3 characters long.
+                </div>
+                <div *ngIf="cityValidator.errors.pattern">
+                  *Only characters are allowed
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row text-center mt-3">
+            <div class="col-sm-12">
+              <p-button label="Submit to Download" styleClass="p-button" (click)="downloadFile()"></p-button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </p-dialog>
+
+    <!-- pop-up form ends -->
+    <div class="gap"></div>
+    <app-about-event [aboutBg]=eventData.about_bg></app-about-event>
   </div>
-
- 
-
-  <!-- pop-up form  -->
-
-  <p-dialog header="Contact Details" [(visible)]="displayPosition" [position]="position" [modal]="true"
-    [style]="{width: '60vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-
-    <div class="container" style="background: white;">
-      <form #contactDetails="ngForm">
-        <div class="row">
-          <!-- firstName validator  -->
-          <div class="col">
-            <input type="text" class="form-control" placeholder="First name" name="firstName" [(ngModel)]="firstName"
-              #firstNameValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
-
-            <div class="form-control-feedback" *ngIf="firstNameValidator.invalid && firstNameValidator.touched">
-              <div *ngIf="firstNameValidator.errors.required">
-                *This field is required.
-              </div>
-              <div *ngIf="firstNameValidator.errors.minlength">
-                *Name must be at least 3 characters long.
-              </div>
-              <div *ngIf="firstNameValidator.errors.pattern">
-                *Only characters are allowed
-              </div>
-            </div>
-          </div>
-
-          <!-- last name validator  -->
-
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Last name" name="lastName" [(ngModel)]="lastName"
-              #lastNameValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
-
-            <div class="form-control-feedback" *ngIf="lastNameValidator.invalid && lastNameValidator.touched">
-              <div *ngIf="lastNameValidator.errors.required">
-                *This field is required.
-              </div>
-              <div *ngIf="lastNameValidator.errors.minlength">
-                *Must be at least 3 characters long.
-              </div>
-              <div *ngIf="lastNameValidator.errors.pattern">
-                *Only characters are allowed
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="row">
-          <!-- email field validator  -->
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="email"
-              #emailValidator="ngModel" required minlength="5" maxlength="30" email>
-
-            <div class="form-control-feedback" *ngIf="emailValidator.invalid && emailValidator.touched">
-              <div *ngIf="emailValidator.errors.required">
-                *This field is required.
-              </div>
-              <div *ngIf="emailValidator.errors.minlength">
-                *Must be at least 5 characters long.
-              </div>
-              <div *ngIf="emailValidator.errors.email">
-                *email should be like @companyName.com
-              </div>
-            </div>
-          </div>
-          <!-- phone validator -->
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Phone Number" name="phone" [(ngModel)]="phone"
-              #phoneValidator="ngModel" required minlength="10" maxlength="10" pattern="[0-9]{1,10}">
-
-            <div class="form-control-feedback" *ngIf="phoneValidator.invalid && phoneValidator.touched">
-              <div *ngIf="phoneValidator.errors.required">
-                *This field is required.
-              </div>
-              <div *ngIf="phoneValidator.errors.minlength">
-                *Must have 10 Digits long.
-              </div>
-              <div *ngIf="phoneValidator.errors.pattern">
-                *Only Numbers are allowed
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="row">
-          <!-- designation validator  -->
-
-
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Designation" name="designation"
-              [(ngModel)]="designation" #designationValidator="ngModel" required minlength="3" maxlength="20"
-              pattern="[a-zA-Z 0-9]{1,20}">
-
-            <div class="form-control-feedback" *ngIf="designationValidator.invalid && designationValidator.touched">
-              <div *ngIf="designationValidator.errors.required">
-                *This field is required.
-              </div>
-              <div *ngIf="designationValidator.errors.minlength">
-                *Must be at least 3 characters long.
-              </div>
-              <div *ngIf="designationValidator.errors.pattern">
-                *Only characters are allowed
-              </div>
-            </div>
-          </div>
-
-          <!-- city validator -->
-          <div class="col">
-            <input type="text" class="form-control" placeholder="City" name="city" [(ngModel)]="city"
-              #cityValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
-
-            <div class="form-control-feedback" *ngIf="cityValidator.invalid && cityValidator.touched">
-
-              <div *ngIf="cityValidator.errors.required">
-                *This field is required.
-              </div>
-              <div *ngIf="cityValidator.errors.minlength">
-                *Name must be at least 3 characters long.
-              </div>
-              <div *ngIf="cityValidator.errors.pattern">
-                *Only characters are allowed
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row text-center mt-3">
-          <div class="col-sm-12">
-            <p-button label="Submit to Download" styleClass="p-button" (click)="downloadFile()"></p-button>
-          </div>
-        </div>
-      </form>
+  <!-- *ngIf="eventType ==  'multiple' " -->
+  {{sticky}}
+  <section [class.sticky]="sticky" #stickyMenu>
+    <div class="gap"></div>
+    <div class="row block text-center">
+      <div class="col-sm"> Global Battery Recycling </div>
+      <div class="col-sm"> SUSTAINABLE CLOTHING & TEXTILE RECYCLING </div>
+      <div class="col-sm"> Plastic Recycling </div>
     </div>
+  </section>
 
-  </p-dialog>
 
-  <!-- pop-up form ends -->
-  <div class="gap"></div>
-  <app-about-event [aboutBg] = eventData.about_bg></app-about-event>
+
   <div class="gap"></div>
   <div class="gap"></div>
+
+  <div *ngFor="let eventData of eventData">
+
+
   <div class="container-fluid" style="background: #faf9f9">
     <div class="container-fluid border1">
-  <app-supported-by [supportedByData] = supportedByData></app-supported-by>
-</div></div>
+      <app-supported-by [supportedByData]=supportedByData></app-supported-by>
+    </div>
+  </div>
 
-  
+
   <div class="gap"></div>
   <div class="container border1">
-  <app-our-partners [ourPartnersData] = ourPartnersData></app-our-partners></div>
+    <app-our-partners [ourPartnersData]=ourPartnersData *ngIf="ourPartnersData[0]"></app-our-partners>
+  </div>
 
 
   <div class="gap"></div>
   <div class="container-fluid" style="background: #faf9f9">
     <div class="container border1">
-  <app-speakers [speakersData] = speakersData></app-speakers></div></div>
+      <app-speakers [speakersData]=speakersData *ngIf="speakersData[0]"></app-speakers>
+    </div>
+  </div>
 
 
-  
+
   <div class="gap"></div>
   <div class="container border1">
-  <app-association-partners></app-association-partners></div>
+    <app-association-partners [associationsData]=associationsData *ngIf="associationsData[0]">
+    </app-association-partners>
+  </div>
 
 
-  
+
   <div class="gap"></div>
-  <div class="container border1">
-  <app-media-partners></app-media-partners></div>
+  <div class="container-fluid" style="background: #faf9f9" *ngIf="mediaData[0]">
+    <div class="gap"></div>
+    <app-media-partners [mediaData]=mediaData></app-media-partners>
+  </div>
 
 
-
+</div>
 </div>

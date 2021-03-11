@@ -1,4 +1,5 @@
-<div class="col-sm-12">
+<div class="col-sm-12" style="background: #f2f2f2;">
+    <div class="gap">
     <form #conferenceForm='ngForm' (ngSubmit)="conferenceData(conferenceForm.value,conferenceForm)" >
         <div class="form-row">
 
@@ -138,43 +139,6 @@
 
         </div>
 
-        <!-- amount -->
-
-        <div class="form-row">
-            <div class="col">
-                <input #amount1="ngModel" type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
-                    [(ngModel)]="amount" required minlength="3" maxlength="20" readonly>
-
-
-            </div>
-            
-                <input type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
-                    [(ngModel)]="amount" required minlength="3" maxlength="20" style="display: none;">
-
-
- 
-
-            <!-- GST validator  -->
-
-            <div class="col">
-                <input type="text" class="form-control" placeholder="GST Number/PAN Card Number" name="gst_no"
-                    #gstValidator="ngModel" required minlength="10" maxlength="15" pattern="[a-zA-Z1-9]{1,20}" ngModel>
-
-                <div class="form-control-feedback" *ngIf="gstValidator.invalid && gstValidator.touched">
-                    <div *ngIf="gstValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="gstValidator.errors.minlength">
-                        *Name must be at least 10 characters long.
-                    </div>
-                    <div *ngIf="gstValidator.errors.pattern">
-                        *Space or spacial characters not allowed
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
         <!-- billiing address -->
         
         <div class="col">
@@ -248,8 +212,60 @@
 
         <!-- hidden data to send -->
         <div class="col my-3">
-            <input class="form-control" rows="2" placeholder="Purpose of Registration" name="register_for" value=1
-                [(ngModel)]="for" ngModel hidden>
+            <input class="form-control" rows="2" placeholder="Purpose of Registration" name="register_for" value={{id}}
+                [(ngModel)]="id" ngModel hidden>
+        </div>
+
+        <!-- amount -->
+
+                <div class="form-row">
+                    <div class="col">
+                        <input #amount1="ngModel" type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
+                            [(ngModel)]="amount" required minlength="3" maxlength="20" readonly>
+        
+        
+                    </div>
+                    
+                        <input type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
+                            [(ngModel)]="amount" required minlength="3" maxlength="20" style="display: none;">
+        
+        
+         
+        
+                    <!-- GST validator  -->
+        
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="GST Number/PAN Card Number" name="gst_no"
+                            #gstValidator="ngModel" required minlength="10" maxlength="15" pattern="[a-zA-Z1-9]{1,20}" ngModel>
+        
+                        <div class="form-control-feedback" *ngIf="gstValidator.invalid && gstValidator.touched">
+                            <div *ngIf="gstValidator.errors.required">
+                                *This field is required.
+                            </div>
+                            <div *ngIf="gstValidator.errors.minlength">
+                                *Name must be at least 10 characters long.
+                            </div>
+                            <div *ngIf="gstValidator.errors.pattern">
+                                *Space or spacial characters not allowed
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+
+
+                 <!-- Coupon checking -->
+
+        
+                <div class="row">
+            <div class="col-sm-4 pt-3 pl-5"> <h6>Have Coupon ?</h6> </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Please Enter The Coupon" name="coupon"
+                     required minlength="0" maxlength="15"  [(ngModel)]="coupon">
+            </div>
+            <div class="col-sm-2">
+                <div class="btn btn-primary mt-3" (click)="addCoupon(coupon)"> Check</div>
+            
+            </div>
         </div>
 
 
@@ -261,3 +277,7 @@
     </form>
 
 </div>
+
+<p-dialog header="alret!!" [(visible)]="display">
+    {{content}}
+</p-dialog>

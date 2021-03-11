@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-association-partners',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./association-partners.component.scss']
 })
 export class AssociationPartnersComponent implements OnInit {
+
+  @Input()associationsData :any;
 
   constructor() { }
 

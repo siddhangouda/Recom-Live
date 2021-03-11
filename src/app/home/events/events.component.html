@@ -9,7 +9,8 @@
 <!-- video section ends -->
 <div class="container">
 
-    <h2 class="header text-center">Our Events</h2>
+    <h1 class="aboutheader text-center">  <span style="color: #0ba8ea;">Our </span> <span
+        style="color: #162e50;">Events </span></h1>
 
 
     <div class="col-sm-12">
@@ -20,7 +21,7 @@
                     <div class="col-sm-4 module-border-wrap" *ngFor="let upcoming of upcomingData">
                       <div class="img-container">
                             <img src="{{upcoming.vc_backgroundImage}}" alt="Avatar" class="image">
-                            <div class="centered text-center"> Global Battery Recycling Conference</div>
+                            <div class="centered text-center"> </div>
                               <div class="middle">
                                 <button type="button" class="btn btn-info" (click)="goToEvent(upcoming.id)"> Explore </button>
                             </div>
@@ -35,20 +36,14 @@
             </p-tabPanel>
 
 
-
-
-
-
-
-
             <p-tabPanel header="Past Events">
                 <div class="row">
                     <div class="col-sm-4 module-border-wrap" *ngFor="let past of pastData">
                         <div class="img-container">
                             <img src="{{past.vc_backgroundImage}}" alt="Avatar" class="image">
-                            <div class="centered text-center">Global Battery Recycling Conference</div>
+                            <div class="centered text-center"></div>
                             <div class="middle">
-                                <button type="button" class="btn btn-info" > Explore </button>
+                                <button type="button" class="btn btn-info" (click)="goToPastEvent(past.id)"> Explore </button>
                             </div>
                         </div>
                     </div>

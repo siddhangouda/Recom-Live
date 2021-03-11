@@ -45,10 +45,26 @@ export class RestApiService {
       )
 
   }
-
+// with id 
   getListbyId(id, link): any {
     this.consParam = {
       "id": id
+    }
+    return this.restApi.post(this.apiURL + link, this.consParam, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+
+  }
+
+  // with id and coupon
+
+  getListbyIdC(id,coupon, link , type): any {
+    this.consParam = {
+      "id": id,
+      "coupon_code" : coupon,
+      "event_type" : type
     }
     return this.restApi.post(this.apiURL + link, this.consParam, this.httpOptions)
       .pipe(

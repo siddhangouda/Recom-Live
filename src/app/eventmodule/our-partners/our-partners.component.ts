@@ -7,10 +7,14 @@ import { Component, OnInit ,Input } from '@angular/core';
 })
 export class OurPartnersComponent implements OnInit {
 
-  @Input() ourPartnersData :any;
+  @Input() public ourPartnersData :any;
+ 
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+   
+
+  }
+   
 }

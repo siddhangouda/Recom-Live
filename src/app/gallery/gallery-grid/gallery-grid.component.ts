@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import AOS from 'aos'
 
 @Component({
   selector: 'app-gallery-grid',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GalleryGridComponent implements OnInit {
 
+  @Input('galleryData')  galleryData :any;
   constructor() { }
 
   ngOnInit(): void {
+    AOS.init();
   }
 
 }

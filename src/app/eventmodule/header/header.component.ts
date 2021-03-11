@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // primeng components
@@ -11,8 +11,15 @@ import { RestApiService } from 'src/app/shared/rest-api.service';
   styleUrls: ['./header.component.scss'],
 
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
+  //for css styles
+  @ViewChild('stickyMenu') stickyMenu :  any;
+  sticky: boolean = false;
+  menuPosition: any;
+
+  
+  // for ts logic
   eventData:any;
   decodedId:any;
   displayPosition: boolean;
@@ -22,6 +29,20 @@ export class HeaderComponent implements OnInit {
   supportedByData:any;
   speakersData :any;
   ourPartnersData:any;
+  associationsData:any;
+  mediaData:any;
+  eventType:any = 'multiple';
+
+  payload = {
+    associations: [],
+    child_events: [],
+  }
+
+  // selected_supportedByData:any;
+  // selected_speakersData :any;
+  // selected_ourPartnersData:any;   
+  // selected_associationsData:any;
+  // selected_mediaData:any;
     
 
   constructor(private primengConfig: PrimeNGConfig,
@@ -31,20 +52,50 @@ export class HeaderComponent implements OnInit {
    ) { }
 
   ngOnInit(): void {
+
+    
     this.primengConfig.ripple = true;
-    //decoding id from params
+    //decoding id(redierectTo) from params
     this.route.queryParams.subscribe(params => {
-      this.decodedId = atob(params.id);
+      this.decodedId = atob(params.redierectTo);
     })
 
     this.restApi.getListbyId(this.decodedId,'event_data/').subscribe(responce =>{
-      this.eventData = responce.events;
+
+      if (this.eventType == 'multiple')
+      {
+        console.log("event ttype is 1")
+        this.restApi.getListbyId(1,'child_event_data/').subscribe(responce =>{
+          console.log("updated event is" ,responce);
+          this.supportedByData = responce.supported_by;
+      this.speakersData = responce.speakers;
+      this.ourPartnersData = responce.our_partners;
+      this.associationsData = responce.associations;
+      this.mediaData = responce.media;
+        })
+      }
+      this.eventData = responce.master_events;
       this.supportedByData = responce.supported_by;
       this.speakersData = responce.speakers;
       this.ourPartnersData = responce.our_partners;
+      this.associationsData = responce.associations;
+      this.mediaData = responce.media;
       
-      console.log(responce);
+      console.log("data",responce);
     }) 
+
+    
+  }
+
+  ngAfterViewInit() {
+    // this.menuPosition = this.stickyMenu.
+    // forEach( _results =>{
+    //   console.log("position2" , _results)
+    // })
+    this.menuPosition = this.stickyMenu.nativeElement.offsetTop
+    console.log("position1" ,this.menuPosition = this.stickyMenu.nativeElement.offsetTop)
+    console.log("position2",this.sticky);
+    
   }
 
     showPositionDialog(position: string ,selected)  {
@@ -73,8 +124,20 @@ export class HeaderComponent implements OnInit {
       this.displayPosition =false;
     }
 
-    goToRegister(){
-      this.router.navigateByUrl('/register');
+    goToRegister(id){
+
+      this.router.navigate(['/register'],{ queryParams: { redierectTo: btoa(id) } });
+      console.log(id);
+    }
+
+    @HostListener('window:scroll', ['$event'])
+    handleScroll(){
+        const windowScroll = window.pageYOffset;
+        if(windowScroll >= this.menuPosition){
+            this.sticky = true;
+        } else {
+            this.sticky = false;
+        }
     }
 
 }

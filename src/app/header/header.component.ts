@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  scroll(): void {
+  document.getElementById("footer").scrollIntoView({ behavior: "smooth", block: "start" });
+
+}
 
 }

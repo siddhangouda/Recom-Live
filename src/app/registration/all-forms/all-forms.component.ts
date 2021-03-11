@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RestApiService } from 'src/app/shared/rest-api.service';
 
 @Component({
   selector: 'app-all-forms',
@@ -7,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllFormsComponent implements OnInit {
 
+  decodedId : any;
+
+
+// set required field 
   partnership:boolean=true;
   conference:boolean=true;
   exhibition:boolean=true;
   visitor:boolean=true;
   vertual : boolean=true;
   
+  //to display form
   partnershipForm:boolean=true;
   conferenceForm:boolean=false;
   exhibitionForm:boolean=false;
@@ -21,9 +28,26 @@ export class AllFormsComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private route : Router,
+              private activeRoute : ActivatedRoute,
+              private restAPI : RestApiService) { }
 
   ngOnInit(): void {
+
+    // get decoded Id 
+     this.activeRoute.queryParams.subscribe(res =>{
+      console.log( this.decodedId = atob(res.redierectTo));
+    })
+        // get decoded Id ends
+
+    //get  reqfield data    
+      this.restAPI.getListbyId(this.decodedId, 'required/').subscribe(res =>{
+        this.conference = res.events_req[0].req_conference
+        this.exhibition = res.events_req[0].req_exhibitors
+        this.partnership = res.events_req[0].req_partners
+        this.vertual = res.events_req[0].req_virtual
+        this.visitor = res.events_req[0].req_visitors
+      })
   }
 
   selectPartnership(){
