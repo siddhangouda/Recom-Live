@@ -6,16 +6,18 @@ import { ExhibitionComponent } from './exhibition/exhibition.component';
 import { CoferenceComponent } from './coference/coference.component';
 import { VisitorComponent } from './visitor/visitor.component';
 import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VertualComponent } from './vertual/vertual.component';
 import {DialogModule} from 'primeng/dialog';
+import {ToastModule} from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
 @NgModule({
   declarations: [AllFormsComponent, PartnershipComponent, ExhibitionComponent, CoferenceComponent, VisitorComponent, VertualComponent],
   imports: [
-    CommonModule,ButtonModule,FormsModule,DialogModule
+    CommonModule,ButtonModule,FormsModule,DialogModule,ReactiveFormsModule,ToastModule, BrowserAnimationsModule
   ]
 })
 export class RegistrationModule { }

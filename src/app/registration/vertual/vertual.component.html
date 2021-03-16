@@ -1,6 +1,6 @@
 <div class="col-sm-12" style="background: #f2f2f2;">
     <div class="gap"></div>
-    <form #vertualForm='ngForm' (ngSubmit)="vertualData(vertualForm.value,vertualForm)" >
+    <form #vertualForm='ngForm' (ngSubmit)="vertualData(vertualForm.value, vertualForm)">
         <div class="form-row">
 
             <!-- firstName validator  -->
@@ -93,7 +93,8 @@
             <!-- email field validator  -->
             <div class="col">
                 <input type="text" class="form-control" placeholder="Email" name="vc_email" [(ngModel)]="email"
-                    #emailValidator="ngModel" required minlength="5" maxlength="30" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$">
+                    #emailValidator="ngModel" required minlength="5" maxlength="30"
+                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$">
 
                 <div class="form-control-feedback" *ngIf="emailValidator.invalid && emailValidator.touched">
                     <div *ngIf="emailValidator.errors.required">
@@ -140,10 +141,10 @@
         </div>
 
         <!-- billiing address -->
-        
+
         <div class="col">
-            <textarea class="form-control" rows="2" type="text" class="form-control" placeholder="Address" name="address"
-                #addressValidator="ngModel" required minlength="3" maxlength="100" ngModel></textarea>  
+            <textarea class="form-control" rows="2" type="text" class="form-control" placeholder="Address"
+                name="address" #addressValidator="ngModel" required minlength="3" maxlength="100" ngModel></textarea>
 
             <div class="form-control-feedback" *ngIf="addressValidator.invalid && addressValidator.touched">
 
@@ -153,10 +154,10 @@
                 <div *ngIf="addressValidator.errors.minlength">
                     *address must be at least 3 characters long.
                 </div>
-                
+
             </div>
         </div>
-        
+
 
 
         <!-- city validator -->
@@ -201,7 +202,7 @@
         </div>
 
 
-        
+
 
 
         <!-- purpose of registration  -->
@@ -218,72 +219,129 @@
 
         <!-- amount -->
 
-                <div class="form-row">
-                    <div class="col">
-                        <input #amount1="ngModel" type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
-                            [(ngModel)]="amount" required minlength="3" maxlength="20" readonly>
-        
-        
-                    </div>
-                    
-                        <input type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
-                            [(ngModel)]="amount" required minlength="3" maxlength="20" style="display: none;">
-        
-        
-         
-        
-                    <!-- GST validator  -->
-        
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="GST Number/PAN Card Number" name="gst_no"
-                            #gstValidator="ngModel" required minlength="10" maxlength="15" pattern="[a-zA-Z1-9]{1,20}" ngModel>
-        
-                        <div class="form-control-feedback" *ngIf="gstValidator.invalid && gstValidator.touched">
-                            <div *ngIf="gstValidator.errors.required">
-                                *This field is required.
-                            </div>
-                            <div *ngIf="gstValidator.errors.minlength">
-                                *Name must be at least 10 characters long.
-                            </div>
-                            <div *ngIf="gstValidator.errors.pattern">
-                                *Space or spacial characters not allowed
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+        <div class="form-row">
+            <div class="col">
+                <input #amount1="ngModel" type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
+                    [(ngModel)]="amount" required minlength="3" maxlength="20" readonly>
 
 
-                 <!-- Coupon checking -->
-
-        
-                <div class="row">
-            <div class="col-sm-4 pt-3 pl-5"> <h6>Have Coupon ?</h6> </div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" placeholder="Please Enter The Coupon" name="coupon"
-                     required minlength="0" maxlength="15"  [(ngModel)]="coupon">
             </div>
-            <div class="col-sm-2">
-                <div class="btn btn-primary mt-3" (click)="addCoupon(coupon)" > Check</div>
-                
+
+            <input type="text" class="form-control" placeholder="{{amount}}" name="total_amount" [(ngModel)]="amount"
+                required minlength="3" maxlength="20" style="display: none;">
+
+
+
+
+            <!-- GST validator  -->
+
+            <div class="col">
+                <input type="text" class="form-control" placeholder="GST Number/PAN Card Number" name="gst_no"
+                    #gstValidator="ngModel" required minlength="10" maxlength="15" pattern="[a-zA-Z1-9]{1,20}" ngModel>
+
+                <div class="form-control-feedback" *ngIf="gstValidator.invalid && gstValidator.touched">
+                    <div *ngIf="gstValidator.errors.required">
+                        *This field is required.
+                    </div>
+                    <div *ngIf="gstValidator.errors.minlength">
+                        *Must be at least 10 characters long.
+                    </div>
+                    <div *ngIf="gstValidator.errors.pattern">
+                        *Space or spacial characters not allowed
+                    </div>
+                </div>
             </div>
         </div>
 
 
+        <!-- Coupon checking -->
+
+
+       
+
         <div class="row">
             <div class="col-sm-12 text-center">
-                <button type="submit" class="btn btn-primary btn-lg" [disabled]="!vertualForm.valid"> Submit </button>
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="vertualForm.valid"> Submit </button>
             </div>
         </div>
     </form>
     <div class="gap"></div>
 </div>
-
+   
+<!-- <button (click)="pushRecords()">click</button> -->
 
 <p-dialog header="alret!!" [(visible)]="display">
     {{content}}
-    
 </p-dialog>
 
 <p-dialog header="alret!!" [(visible)]="payment">
     {{razorpayResponse}}
 </p-dialog>
+
+<p-dialog header="    " [(visible)]="addOns" [style]="{width: '50vw'}">
+
+    <div class="row">
+        <div class="col-sm-7">
+
+            <b>Select your events</b>
+
+
+
+            <form [formGroup]="checkForm" (ngSubmit)="onSubmit()">
+              
+                <div class="col" *ngFor="let child of childData" >
+                    <input class="checkbok" type="checkbox"(change)="onSubmit1()" name="child" value="child.vc_event_title"
+                        [formControlName]="child.id">
+                    <label for="child"> {{child.vc_event_title }} </label><br>
+                </div>
+            
+            </form>
+        
+           
+        </div>
+
+        <div class="col-sm-4 " style="font-size: 13px;"> Your Total Billing Amount:
+        <div class="row"><br></div>
+        <table>
+            <tr>
+                <td>Total Amount :</td> <td>{{totalAmount | number : '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>Discount  : -</td> <td>  {{discountAmount | number : '1.2-2'}}</td>
+            </tr>
+
+            <hr>
+            <tr>
+                <td>Coupon Discount</td> <td> {{couponDiscount | number : '1.2-2'}}</td>
+            </tr>
+           <hr>
+            <tr>
+                <td>Payable Amount  :</td> <td>{{payableAmount | number : '1.2-2'}}</td>
+            </tr>
+        </table></div>
+
+        <div class="row">
+            <div class="col-sm-4 pt-3 pl-5">
+                <h6>Have Coupon ?</h6>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Please Enter The Coupon" name="coupon" required
+                    minlength="0" maxlength="15" [(ngModel)]="coupon">
+            </div>
+            <div class="col-sm-2">
+                <div > <button class="btn btn-primary mt-3" (click)="addCoupon(coupon)" [disabled]= "selectedCheckBox.length == 0"> check </button></div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="gap"></div>
+    <div class="row  text-center">
+        <div class="col-sm-12  text-center">
+            <button pButton  label="Proceed To Pay" style="width: 90%;"
+                class="p-button-raised p-button-rounded" (click)="payNow()" [disabled]= "selectedCheckBox.length == 0"></button>
+        </div>
+    </div>
+</p-dialog>
+
+<p-toast position="center" key="bc"></p-toast>

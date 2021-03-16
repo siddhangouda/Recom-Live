@@ -7,17 +7,20 @@ import { AlleventsComponent} from './eventsmodule/allevents/allevents.component'
 import { AllFormsComponent } from './registration/all-forms/all-forms.component';
 import { AboutheaderComponent } from './about/aboutheader/aboutheader.component';
 import { PastheaderComponent } from './past-event-module/pastheader/pastheader.component';
+import { TmplAstBoundAttribute } from '@angular/compiler';
 
 const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot([{path:'index' , component : EventsComponent},
-                                  {path:'events', component:HeaderComponent},
+                                  
                                   {path: 'gallery' , component : GalleryComponent},
                                   {path: 'ourevents', component : AlleventsComponent},
                                   {path : 'register' , component : AllFormsComponent},
                                   {path : 'aboutUs' , component: AboutheaderComponent},
                                   // {path : 'past-event-module' , loadChildren : './past-event-module/past-event-module.module#PastEventModuleModule'},
+                                 
+                                  {path:'events', component:HeaderComponent},
                                   {
                                     path: 'past-event-module',
                                     loadChildren: () => import('./past-event-module/past-event-module.module').then(m => m.PastEventModuleModule)

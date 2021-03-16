@@ -1,4 +1,27 @@
 
+
+.sticky{
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    z-index: 10;
+    width: 100%;
+  }
+
+.block :nth-child(odd) {
+    background: #a14d6d;
+    padding: 20px;
+    color: white;
+}
+
+.block :nth-child(even) {
+    background: rgb(178, 32, 64);
+    color: white;
+    padding: 20px;
+}
+
+
+
 .bg-dark {
     color : #cdcdcd !important; 
     

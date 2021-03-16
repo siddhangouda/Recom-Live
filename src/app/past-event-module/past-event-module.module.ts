@@ -26,7 +26,8 @@ import { pasteventmoduleRoutingModule } from './past-event-module.routing.module
     // BrowserModule,
     // BrowserAnimationsModule,
     pasteventmoduleRoutingModule
-  ]
+  ],
+  exports :[CommonModule , PastheaderComponent]
 })
 
 

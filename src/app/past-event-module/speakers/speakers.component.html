@@ -9,7 +9,7 @@
     <div class="col-sm-2 " *ngFor="let speaker of speakersData index as i" >
         <div class="card ">
            <img class="card-img-top ml-3 mt-3" src="{{speaker.vc_img_link}}" alt="Card image cap" style="width: 80%;"  (click)="showDialog(i)" >
-           <div class="overlay"> <i style="color: white; font-size: 30px;" class="pi pi-youtube" (click)="showVideo(i)" ></i></div>
+           <div class="overlay">PPT<i class="pi pi-arrow-down" style="color: white; font-size: 30px;" >| </i> <i style="color: white; font-size: 30px;" class="pi pi-youtube" (click)="showVideo(i)" ></i></div>
            <div class="card-body text-center ">
                 <div class="f15" style="height: 50px;" > {{speaker.vc_speaker_name}} </div>
                 <div class="f12" style="height: 35px;"> {{speaker.vc_designation}} </div>     

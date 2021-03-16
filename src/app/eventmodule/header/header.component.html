@@ -1,3 +1,7 @@
+<div *ngIf = "eventData[0].vc_status == 'past' ">
+
+<app-pastheader></app-pastheader></div>
+<div *ngIf = "eventData[0].vc_status == 'upcoming' ">
 <div class="container-fluid">
 
   <div *ngFor="let eventData of eventData">
@@ -13,7 +17,7 @@
 
         <h3 class="header text-left ml-4"> {{eventData.vc_main_title | uppercase }}</h3>
         <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-map-marker"></i> {{eventData.vc_event_location}}</h5>
-        <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-calendar-plus"></i> {{eventData.vc_event_location}}
+        <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-calendar-plus"></i> {{eventData.event_date}}
         </h5>
         <div class="gap"></div>
         <div class="gap"></div>
@@ -195,14 +199,17 @@
     <app-about-event [aboutBg]=eventData.about_bg></app-about-event>
   </div>
   <!-- *ngIf="eventType ==  'multiple' " -->
-  {{sticky}}
-  <section [class.sticky]="sticky" #stickyMenu>
+
+  <section [class.sticky]="sticky" #stickyMenu *ngIf = "childEventsData.length > 1">
     <div class="gap"></div>
     <div class="row block text-center">
-      <div class="col-sm"> Global Battery Recycling </div>
-      <div class="col-sm"> SUSTAINABLE CLOTHING & TEXTILE RECYCLING </div>
-      <div class="col-sm"> Plastic Recycling </div>
+      <div class="col-sm" *ngFor="let childData of childEventsData index as i" (click)="selectEvent(i)">
+
+        {{childData.vc_event_title}}
+
+      </div>
     </div>
+
   </section>
 
 
@@ -210,45 +217,47 @@
   <div class="gap"></div>
   <div class="gap"></div>
 
-  <div *ngFor="let eventData of eventData">
+ 
 
 
-  <div class="container-fluid" style="background: #faf9f9">
-    <div class="container-fluid border1">
-      <app-supported-by [supportedByData]=supportedByData></app-supported-by>
+    <div class="container-fluid" style="background: #faf9f9">
+      <div class="container-fluid border1">
+        <app-supported-by [supportedByData]=supportedByData  *ngIf = "supportedByData.length > 1"></app-supported-by>
+      </div>
     </div>
-  </div>
 
 
-  <div class="gap"></div>
-  <div class="container border1">
-    <app-our-partners [ourPartnersData]=ourPartnersData *ngIf="ourPartnersData[0]"></app-our-partners>
-  </div>
-
-
-  <div class="gap"></div>
-  <div class="container-fluid" style="background: #faf9f9">
-    <div class="container border1">
-      <app-speakers [speakersData]=speakersData *ngIf="speakersData[0]"></app-speakers>
-    </div>
-  </div>
-
-
-
-  <div class="gap"></div>
-  <div class="container border1">
-    <app-association-partners [associationsData]=associationsData *ngIf="associationsData[0]">
-    </app-association-partners>
-  </div>
-
-
-
-  <div class="gap"></div>
-  <div class="container-fluid" style="background: #faf9f9" *ngIf="mediaData[0]">
     <div class="gap"></div>
-    <app-media-partners [mediaData]=mediaData></app-media-partners>
-  </div>
+    <div class="container border1">
+      <app-our-partners [ourPartnersData]=ourPartnersData *ngIf="ourPartnersData.length > 1"></app-our-partners>
+    </div>
 
 
+    <div class="gap"></div>
+    <div class="container-fluid" style="background: #faf9f9">
+      <div class="container border1">
+        <app-speakers [speakersData]=speakersData *ngIf="speakersData.length > 1"></app-speakers>
+      </div>
+    </div>
+
+
+
+    <div class="gap"></div>
+    <div class="container border1">
+      <app-association-partners [associationsData]=associationsData *ngIf="associationsData.length > 1">
+      </app-association-partners>
+    </div>
+
+
+
+    <div class="gap"></div>
+    <div class="container-fluid" style="background: #faf9f9" *ngIf="mediaData.length > 1">
+      <div class="gap"></div>
+      <app-media-partners [mediaData]=mediaData></app-media-partners>
+    </div>
+
+
+  
 </div>
+
 </div>

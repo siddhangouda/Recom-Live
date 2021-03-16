@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AboutEventComponent } from './about-event/about-event.component';
+import { PastEventModuleModule } from '../past-event-module/past-event-module.module';
 
 @NgModule({
   declarations: [HeaderComponent, SupportedByComponent, OurPartnersComponent, SpeakersComponent, AssociationPartnersComponent, MediaPartnersComponent, AboutEventComponent],
@@ -22,7 +23,8 @@ import { AboutEventComponent } from './about-event/about-event.component';
     CommonModule,
     CarouselModule,
     DialogModule,
-    ButtonModule,FormsModule
+    ButtonModule,FormsModule,
+    PastEventModuleModule
   ]
 })
 export class EventmoduleModule { }

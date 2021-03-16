@@ -10,7 +10,7 @@
         <div class="col-sm-7 ">
             <div class="gap"></div>
 
-            <h1 class="header text-left ml-4"> {{eventData.vc_event_title | uppercase }}</h1>
+            <h1 class="header text-left ml-4"> {{eventData.vc_main_title }}</h1>
             <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-map-marker"></i> {{eventData.vc_event_location}}
             </h5>
             <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-calendar-plus"></i>
@@ -201,6 +201,18 @@
     <app-aboutevent [aboutBg]=eventData.about_bg>
     </app-aboutevent>
 
+
+    <section [class.sticky]="sticky" #stickyMenu *ngIf = "childEventsData.length > 1">
+        <div class="gap"></div>
+        <div class="row block text-center">
+          <div class="col-sm" *ngFor="let childData of childEventsData index as i" (click)="selectEvent(i)">
+    
+            {{childData.vc_event_title}}
+    
+          </div>
+        </div>
+    
+      </section>
 
     <div class="container-fluid" style="background: #faf9f9">
         <div class="row">

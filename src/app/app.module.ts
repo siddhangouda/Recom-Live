@@ -16,7 +16,9 @@ import { AboutModule } from './about/about.module';
 import { PastEventModuleModule } from './past-event-module/past-event-module.module';
 import { SharedModule } from './shared/shared.module';
 import {ScrollTopModule} from 'primeng/scrolltop';
-
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,10 @@ import {ScrollTopModule} from 'primeng/scrolltop';
     HttpClientModule,
     AboutModule,
     // PastEventModuleModule,
-    SharedModule,ScrollTopModule
+    SharedModule,ScrollTopModule,
+    ToastModule,
+    RippleModule
+    
  
   ],
   providers: [],
