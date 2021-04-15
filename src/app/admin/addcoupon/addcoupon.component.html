@@ -1,0 +1,78 @@
+<div class="gap20"></div>
+<div class="container-fluid">
+<!-- <div class="col-sm-12 text-center" >
+<h1 style="background-color: #2c707a;padding-bottom: 40px;padding-top: 40px;color: white;font-weight: 500;" >Add Coupon</h1>
+
+</div>
+-->
+
+<div class="row ml-2 " >
+<div class="col-sm-3" style="background-color: #f1efef;">
+<div class="col-sm-12 text-center mt-2" >
+<h5 style="background-color: #2c707a;padding-bottom: 5px;padding-top: 5px;color: white;font-weight: 500;" >Add Coupon</h5>
+
+</div>
+<form (ngSubmit)="onSubmit()" [formGroup]="myform" >
+<div class="col-md-12 mt-3">
+
+<select class="form-control" formControlName="master_event" >
+<option value="">select event</option>
+<option *ngFor="let event of events" value="{{event.id}}">
+{{event.vc_main_title}}
+</option>
+
+</select>
+</div>
+<div class="col-md-12 mt-3">
+
+<select class="form-control" formControlName="event_type">
+<option value="">select event type</option>
+<option value="physical">physical</option>
+<option value="virtual">virtual</option>
+</select>
+</div>
+<div class="col-md-12 mt-3">
+
+<input type="email" placeholder="Coupon Code" class="form-control" id="inputEmail4" formControlName="coupon_code">
+</div>
+<div class="col-md-12 mt-3">
+
+<input type="number" placeholder="Discount Percentage" class="form-control" id="inputPassword4" formControlName="discount_percentage">
+</div>
+
+<div class="col-md-12 mt-3 text-center">
+
+<button type="submit" class="btn btn-dark">ADD</button>
+</div>
+<br>
+</form>
+</div>
+<div class="col-sm-9 mt-2" >
+
+<table class="row-border hover" style="width: 100%;" id="user-table" >
+<thead>
+<tr>
+<th>Event</th>
+<th>Event Type</th>
+<th>Coupon Code</th>
+<th>Coupon Discount</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody >
+<tr *ngFor="let item of coupons">
+<td>{{item.master_event}}</td>
+<td>{{item.event_type}}</td>
+<td>{{item.coupon_code}}</td>
+<td>{{item.discount_percentage}}</td>
+<td><i class="fa fa-trash" aria-hidden="true" (click)="delete(item.id)"></i>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+</div>
+
+</div>
+</div>

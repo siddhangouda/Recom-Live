@@ -1,0 +1,83 @@
+<div class="container">
+<div class="container-fluid">
+    
+    <div class="container">
+        <div class="col-sm-12 text-center">
+            <h4>You are Logged as Admin</h4>
+        </div>
+
+        <div class="gap20"></div>
+<div class="row">
+    <div class="col-sm-3">
+        <button class="button btn" (click)="listSpeakers()"> View Speakers</button>
+    </div>
+
+    <div class="col-sm-3">
+        <button class="button btn" (click)="viewleads()"> View Leads</button>
+    </div>
+
+    <div class="col-sm-3">
+        <button class="button btn" (click)="coupon()"> View Coupons</button>
+    </div>
+    <div class="col-sm-3 text-right">
+        <button class="button btn" (click)="createEvent()"> Create new Event</button>
+    </div>
+
+
+
+</div>
+        
+    </div>
+</div>
+
+<div class="gap"></div>
+
+<div class="row">
+    <div class="col-sm-4 module-border-wrap mt-3" *ngFor="let upcoming of upcomingData">
+      <div class="img-container">
+            <img src="{{upcoming.vc_backgroundImage}}" alt="Avatar" class="image">
+            <div class="centered text-center"> </div>
+
+            <div class="middle" *ngIf = "upcoming.old_url">
+                <button type="button" class="btn btn-info" (click)="editEvent(upcoming.id)"> Edit </button>
+                <button type="button" class="btn btn-info" (click)="confirm(upcoming.id)"> Delete </button>
+
+            </div>
+              <div class="middle" *ngIf = "!upcoming.old_url">
+                <button type="button" class="btn btn-info" (click)="editEvent(upcoming.id)"> Edit </button>
+                <button type="button" class="btn btn-info" (click)="confirm(upcoming.id)"> Delete </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gap"></div>
+
+<div class="row">
+    <div class="col-sm-4 module-border-wrap" *ngFor="let past of pastData">
+        <div class="img-container">
+            <img src="{{past.vc_backgroundImage}}" alt="Avatar" class="image">
+            <div class="centered text-center"></div>
+
+            <div class="middle" *ngIf = "past.old_url">
+                <button type="button" class="btn btn-info" (click)="editEvent(past.id)"> Edit </button>
+                <button type="button" class="btn btn-info" (click)="confirm(past.id)" > Delete </button>
+
+            </div>
+            <div class="middle" *ngIf = "!past.old_url">
+                <button type="button" class="btn btn-info" (click)="editEvent(past.id)"> Edit </button>
+                <button type="button" class="btn btn-info" (click)="confirm(past.id)" > Delete </button>
+
+            </div>
+
+           
+        </div>
+    </div>
+   
+</div>
+
+<p-confirmDialog  [style]="{width: '50vw'}">
+    Content
+</p-confirmDialog>
+
+</div>

@@ -1,0 +1,167 @@
+<div class="container">
+    <div class="container" *ngIf="showMaster == true" class="form-group">
+        <div class="container1">
+            <div class="col-sm-12 my-3 text-center">
+                <h3>Enter Master Details </h3>
+            </div>
+
+            <form #masterForm="ngForm" (ngSubmit)="masterData(masterForm)">
+
+                <div class="row" class="form-row ">
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="text" name="vc_main_title" ngModel minlength="5"
+                            maxlength="80" placeholder="Main Title">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="text" name="vc_event_location" ngModel minlength="1"
+                            maxlength="50" placeholder="Location">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="text" name="vc_city" ngModel minlength="1" maxlength="50"
+                            placeholder="city">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="text" name="vc_state" ngModel minlength="1" maxlength="50"
+                            placeholder="state">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="text" name="country" ngModel minlength="1" maxlength="50"
+                            placeholder="country">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="number" name="db_registrationTotal" ngModel minlength="1"
+                            maxlength="50" placeholder="amount">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input class="form-control" name="old_url" maxlength="10000" placeholder="Outside Website URL"
+                            ngModel>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input class="form-control" type="text" name="event_date" ngModel minlength="1" maxlength="50"
+                            placeholder="Event Date / Dates">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-control" type="text" name="event_url_id" ngModel minlength="1"
+                            maxlength="400" placeholder="Event URL">
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+
+                       
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="vc_eventType">Choose Event Type:</label>
+                        <select name="vc_eventType" id="vc_eventType" ngModel class="form-control">
+                            <option value="Conference" ngValue>Conference</option>
+                            <option value="Webinar" ngValue>Webinar</option>
+                            <option value="virtual" ngValue>virtual</option>
+                            <option value="Exhibition" ngValue>Exhibition</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <textarea class="form-control" type="text" name="news" ngModel minlength="1" maxlength="50000"
+                            placeholder="Updates"></textarea>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="dt_event_start_date">Start Date :</label>
+                        <input class="form-control" type="date" name="dt_event_start_date" maxlength="400"
+                            placeholder="Start Date" ngModel>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="dt_event_end_date">End Date :</label>
+                        <input class="form-control" type="date" name="dt_event_end_date" placeholder="End Date" ngModel>
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        <textarea class="form-control" name="vc_description" placeholder="description"
+                            ngModel></textarea>
+                    </div>
+                </div>
+                <div class="row" class="form-row ">
+
+                    <div class="form-group col-md-3">
+                        <label for="req_conference">Req conference ?</label>
+                        <input type="checkbox" name="req_conference" ngModel [(ngModel)]="req_conference"
+                            (change)="conference($event)">
+                    </div>
+                    <div class="form-group col-md-3">
+
+                        <label for="req_exhibitor">Req Exhibitor ?</label>
+                        <input type="checkbox" name="req_exhibitor" ngModel [(ngModel)]="req_exhibitor"
+                            (change)="exhibitor($event)">
+                    </div>
+
+                    <div class="form-group col-md-3">
+
+                        <label for="req_partners">Req Partners ?</label>
+                        <input type="checkbox" name="req_partners" ngModel [(ngModel)]="req_partners"
+                            (change)="partners($event)">
+                    </div>
+
+                    <div class="form-group col-md-3">
+
+                        <label for="req_visitor">Req Visitor ?</label>
+                        <input type="checkbox" name="req_visitor" ngModel [(ngModel)]="req_visitor"
+                            (change)="visitor($event)">
+                    </div>
+
+                    <div class="form-group col-md-3">
+
+                        <label for="req_conference">Req_Virtual ?</label>
+                        <input type="checkbox" name="req_Virtual" ngModel [(ngModel)]="req_Virtual"
+                            (change)="Virtual($event)">
+
+                    </div>
+                </div>
+                <div class="row" class="form-row ">
+
+                    <div class="form-group col-md-3">
+                        <label for="vc_eventBanner">Upload event Banner[big]</label>
+                        <input class="form-control-file" type="file" id="myFile" name="vc_eventBanner"
+                            (change)="fileUploadBanner($event)" ngModel accept="image/x-png,image/gif,image/jpeg">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="vc_backgroundImage">Upload event Banner[small</label>
+                        <input class="form-control-file" type="file" id="myFile" name="vc_backgroundImage"
+                            (change)="fileUploadImage($event)" ngModel accept="image/x-png,image/gif,image/jpeg">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="vc_agenda_link">Upload agenda</label>
+                        <input class="form-control-file" type="file" id="myFile" name="vc_agenda_link"
+                            (change)="fileUploadagenda($event)" ngModel>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="vc_brochure_link">vc_brochure_link</label>
+                        <input class="form-control-file" type="file" id="myFile" name="vc_brochure_link"
+                            (change)="fileUploadbrochure($event)" ngModel>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="vc_floorPlan_link">vc_floorPlan_link</label>
+                        <input class="form-control-file" type="file" id="myFile" name="vc_floorPlan_link" ngModel
+                            (change)="fileUploadfloorPlan($event)">
+                    </div>
+
+
+
+
+
+                    <!-- <button type="button" class="btn btn-primary" (click)="onUpload()"> Upload </button> -->
+
+                </div>
+                <div class="col-sm-12 text-center">
+                    <button class="btn btn-primary" type="submit"> Submit </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

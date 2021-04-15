@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="gap20"></div>
 
 <div class="row">
@@ -8,17 +9,24 @@
 
 <div class="gap20"></div>
 
-<div class="row">
+<div class="row text-left" >
 
-    <div class="col-sm-2 " *ngFor="let speaker of speakersData index as i">
-        <div class="card ">
+    <div class="col-sm-2" *ngFor="let speaker of speakersData index as i" >
+        <div class="card">
             <img class="card-img-top ml-3 mt-3" src="{{speaker.vc_img_link}}" alt="Card image cap"
-                (click)="showDialog(i)" style="width: 80%;">
-            <div class="overlay"> <i style="color: white; font-size: 30px;" class="pi pi-facebook"></i></div>
+            (mouseenter)="showDialog(i)" (mouseleave)="hideDialog(i)"  style="width: 80%;">
+            <div class="overlay"> 
+                    <p>{{speaker.vc_about_speaker}}</p>
+                   <div style="bottom: 0%;position: absolute; margin-left: 34%;">
+                    <!-- <i style=" font-size: 20px;padding-right: 10px;" class="pi pi-facebook" ></i>     -->
+                  <a href="{{speaker.vc_linkedin_link}}" rel = "no-follow" target="_blank"><i style="font-size:24px;color:#0072b1;" class="fa" >&#xf08c;</i></a>
+                </div>
+                </div>
             <div class="card-body text-center ">
                 <div class="f15" style="height: 50px;"> {{speaker.vc_speaker_name}} </div>
                 <div class="f12" style="height: 35px;"> {{speaker.vc_designation}} </div>
             </div>
+            
         </div>
     </div>
 </div>
@@ -30,8 +38,11 @@
         <div class="col-sm-6">
             <div class=""> {{name}} </div>
             <div class=""> {{discription}} </div>
-            {{about}}
+ 
         </div>
     </div>
 </p-dialog>
+
+
+
 <div class="gap"></div>

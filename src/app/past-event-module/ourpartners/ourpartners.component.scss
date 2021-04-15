@@ -5,11 +5,15 @@
 .col-sm-2 {
 margin: 10px;
 }
+.col-sm-15 {
+    margin: auto !important;
+}
 
 .Pastheader {
     background-color: deepskyblue;
     width: 100%;
     padding: 0.5rem;
     color: white;
+    border-top-right-radius: 50px;
     border-top-left-radius: 50px;
 }

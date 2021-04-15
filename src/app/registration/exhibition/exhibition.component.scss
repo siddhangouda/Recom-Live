@@ -8,3 +8,10 @@ textarea {
     width: 98%;
     
 }
+
+@media screen and (max-width: 600px) {
+    .col-sm-2 {
+        max-width: 100%;
+        width: 100% !important;
+    }
+    }

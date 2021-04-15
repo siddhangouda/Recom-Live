@@ -1,48 +1,69 @@
 <div class="container-fluid">
     <div class="row">
-
-        <!-- bootstrap navigation bar -->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-
-            <div class="col-sm-2">
-                <div class="navbar-brand">
-                <a routerLink="/index">    <img class="img-fluid" src="./assets/images/recommercelogo.png" /></a> 
-                </div>
-            </div>
-
-            <div class="col-sm-6"></div>
-
-            <div class="col-sm-5 text-right">                
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item ">
-                            <a class="nav-link" routerLink="/index" > Home </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/gallery">  Gallery </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/aboutUs">  About Us </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" (click)="scroll()"> Contact Us </a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
+    
+    <!-- bootstrap navigation bar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    
+    <div class="col-sm-2 mobImg">
+    <div class="navbar-brand">
+    <a routerLink="/home"> <img class="img-fluid " src="./assets/images/recommercelogo.png" /></a>
     </div>
-</div>
-
-<div class="gap10"></div>
-<div class="gap10"></div>
-<div class="gap10"></div>
-<div class="gap10"></div>
-<div class="gap10"></div><div class="gap10"></div><div class="gap10"></div>
+    </div>
+    
+    <div class="col-sm-4" ></div>
+    
+    <div class="col-sm-7 text-right marginTop" #ttt>
+    
+    <button class="navbar-toggler nav-link" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+    <ul class="navbar-nav mr-auto" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <li class="nav-item ">
+    <a class="nav-link " routerLink="/home" > Home </a>
+    </li>
+    <li class="nav-item ">
+    <a class="nav-link" routerLink="/events" > Events </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" routerLink="/gallery"> Gallery </a>
+    </li>
+    <li class="nav-item dropdown">
+    <!-- <a class="nav-link" routerLink="/aboutUs"> About Us </a> -->
+    
+    <a class="nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    About
+    </a>
+    
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" routerLink="about/ourstories" > Our Story </a>
+    <a class="dropdown-item" routerLink="about/ourteam" > Our Team </a>
+    
+    </div>
+    
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" (click)="scroll()"> Contact Us </a>
+    </li>
+    <li class="nav-item">
+    <!-- <a class="nav-link" routerLink="carrers"> Careers </a> -->
+    </li>
+    </ul>
+    
+    </div>
+    </div>
+    </nav>
+    </div>
+    </div>
+    
+    <div class="gap10"></div>
+    <div class="gap10"></div>
+    <div class="gap10"></div>
+    <div class="gap10"></div>
+    <div class="gap10 "></div><div class="gap10"></div><div class="gap10"></div>
+    <div class="mobgap"></div>

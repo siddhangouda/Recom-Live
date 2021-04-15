@@ -12,20 +12,20 @@ export class MediaPartnersComponent implements OnInit {
 	constructor() { 
     this.responsiveOptions = [
       {
-          breakpoint: '100%',
-          numVisible: 3,
-          numScroll: 3
-      },
-      {
-          breakpoint: '75%',
-          numVisible: 2,
-          numScroll: 2
-      },
-      {
-          breakpoint: '25%',
-          numVisible: 1,
-          numScroll: 1
-      }
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3
+    },
+    {
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2
+    },
+    {
+        breakpoint: '660px',
+        numVisible: 1,
+        numScroll: 1
+    }
   ];
 	}
   

@@ -1,5 +1,6 @@
 .card {
     border:0px;
+    background: none;
 }
 
 .col-sm-2 {
@@ -11,5 +12,12 @@ margin: 10px;
     width: 100%;
     padding: 0.5rem;
     color: white;
+    border-top-right-radius: 50px;
     border-top-left-radius: 50px;
+}
+
+.col-sm-15 {
+    margin: auto !important;
+    margin-left: 13px !important;
+    margin-top: 10px !important;
 }

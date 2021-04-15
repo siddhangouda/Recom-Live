@@ -1,0 +1,239 @@
+<div class="gap20"></div>
+<div class="container-fluid">
+<div class="col-sm-12 text-center">
+<h3 style="background-color: #2c707a;padding-bottom: 5px;padding-top: 5px;color: white;font-weight: 500;">
+Reistered Speakers</h3>
+
+</div>
+<div class="col-sm-12 text-center ml-5">
+
+<div class="row text-center" >
+<div class="col-sm-2"><button type="button" class="btn" [ngClass]="{'active': tabIndex === 1}" (click)="enable(1)">conference</button>
+</div>
+<div class="col-sm-2"><button type="button" class="btn" [ngClass]="{'active': tabIndex === 2}" (click)="enable(2)">exhibitors</button>
+</div>
+<div class="col-sm-2"><button type="button" class="btn" [ngClass]="{'active': tabIndex === 3}" (click)="enable(3)">partnerships</button>
+</div>
+<div class="col-sm-2"><button type="button" class="btn" [ngClass]="{'active': tabIndex === 4}"(click)="enable(4)">visitor</button></div>
+<div class="col-sm-2"><button type="button" class="btn" [ngClass]="{'active': tabIndex === 5}" (click)="enable(5)">virtual</button></div>
+</div>
+</div>
+
+<div >
+<div class="row ml-2" [hidden]="conference_">
+<div class="col-sm-12 mt-2">
+
+<table class="row-border hover" id="user-table">
+
+<thead>
+<tr>
+<th>Event name</th>
+<th>Name</th>
+<th>Address</th>
+<th>Date</th>
+<th>Event Charges</th>
+<th>Coupen</th>
+<th>Gst No</th>
+<th>City </th>
+<th>Company</th>
+<th>Designation</th>
+<th>Email</th>
+<th>Phone Number </th>
+<th>Purpose</th>
+</tr>
+</thead>
+
+
+<tbody>
+<tr *ngFor="let item of conference">
+<td>{{item.event_id}}</td>
+<td>{{item.ch_firstname+" "+item.ch_lastname}}</td>
+<td>{{item.address}}</td>
+<td>{{item.dt_created_date_time}}</td>
+<td>{{item.event_charges}}</td>
+<td>{{item.coupen}}</td>
+<td>{{item.gst_no}}</td>
+<td>{{item.vc_city}}</td>
+<td>{{item.vc_company}}</td>
+<td>{{item.vc_designation}}</td>
+<td>{{item.vc_email}}</td>
+<td>{{item.vc_phonenumber}}</td>
+<td>{{item.purpose}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+<div >
+<div class="row ml-2" [hidden]="partnerships_">
+<div class="col-sm-12 mt-2">
+
+<table class="row-border hover" id="user-table1">
+
+<thead>
+
+<th>Event id</th>
+<th>Name</th>
+<th>Date</th>
+<th>City: </th>
+<th>Company</th>
+<th>Designation</th>
+<th>Email</th>
+<th>Phonenumber </th>
+<th>Purpose</th>
+
+
+</thead>
+
+
+<tbody>
+<tr *ngFor="let item of partnerships">
+<td>{{item.master_event}}</td>
+<td>{{item.ch_firstname+" "+item.ch_lastname}}</td>
+<td>{{item.dt_created_date_time}}</td>
+<td>{{item.vc_city}}</td>
+<td>{{item.vc_company}}</td>
+<td>{{item.vc_designation}}</td>
+<td>{{item.vc_email}}</td>
+<td>{{item.vc_phonenumber}}</td>
+<td>{{item.purpose}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+<div >
+<div class="row ml-2" [hidden]="virtual_">
+<div class="col-sm-12 mt-2">
+
+<table class="row-border hover" id="user-table2">
+
+<thead>
+
+<th>Event name</th>
+<th>Name</th>
+<th>Address</th>
+<th>Date</th>
+<th>Event Charges</th>
+<th>Coupen</th>
+<th>GST no</th>
+<th>City </th>
+<th>Company</th>
+<th>Designation</th>
+<th>Email</th>
+<th>Phone Number: </th>
+<th>Purpose</th>
+
+</thead>
+
+
+<tbody>
+<tr *ngFor="let item of virtual">
+<td>{{item.master_event}}</td>
+<td>{{item.ch_firstname+" "+item.ch_lastname}}</td>
+<td>{{item.address}}</td>
+<td>{{item.dt_created_date_time}}</td>
+<td>{{item.event_charges}}</td>
+<td>{{item.coupen}}</td>
+<td>{{item.gst_no}}</td>
+<td>{{item.vc_city}}</td>
+<td>{{item.vc_company}}</td>
+<td>{{item.vc_designation}}</td>
+<td>{{item.vc_email}}</td>
+<td>{{item.vc_phonenumber}}</td>
+<td>{{item.purpose}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+<div >
+<div class="row ml-2" [hidden]="visitor_">
+<div class="col-sm-12 mt-2">
+
+<table class="row-border hover" id="user-table3">
+
+<thead>
+
+<th>Event id</th>
+<th>Name</th>
+<th>Date</th>
+<th>City </th>
+<th>State </th>
+<th>company</th>
+<th>designation</th>
+<th>email</th>
+<th>phonenumber: </th>
+<th>purpose</th>
+
+</thead>
+
+
+<tbody>
+<tr *ngFor="let item of visitor">
+<td>{{item.master_event}}</td>
+<td>{{item.ch_firstname+" "+item.ch_lastname}}</td>
+<td>{{item.dt_created_date_time}}</td>
+<td>{{item.vc_city}}</td>
+<td>{{item.vc_state}}</td>
+<td>{{item.vc_company}}</td>
+<td>{{item.vc_designation}}</td>
+<td>{{item.vc_email}}</td>
+<td>{{item.vc_phonenumber}}</td>
+<td>{{item.purpose}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+<div >
+<div class="row ml-2" [hidden]="exhibitors_">
+<div class="col-sm-12 mt-2">
+
+<table class="row-border hover" id="user-table4">
+
+<thead>
+
+<th>Event id</th>
+<th>Name</th>
+<th>Date</th>
+<th>City </th>
+<th>State </th>
+<th>company</th>
+<th>designation</th>
+<th>email</th>
+<th>phonenumber: </th>
+<th>purpose</th>
+
+</thead>
+
+
+<tbody>
+<tr *ngFor="let item of exhibitors">
+<td>{{item.master_event}}</td>
+<td>{{item.ch_firstname+" "+item.ch_lastname}}</td>
+<td>{{item.dt_created_date_time}}</td>
+<td>{{item.vc_city}}</td>
+<td>{{item.vc_state}}</td>
+<td>{{item.vc_company}}</td>
+<td>{{item.vc_designation}}</td>
+<td>{{item.vc_email}}</td>
+<td>{{item.vc_phonenumber}}</td>
+<td>{{item.purpose}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>

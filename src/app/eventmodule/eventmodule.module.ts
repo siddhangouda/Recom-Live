@@ -14,9 +14,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AboutEventComponent } from './about-event/about-event.component';
 import { PastEventModuleModule } from '../past-event-module/past-event-module.module';
+import { WhoCanVisitComponent } from './who-can-visit/who-can-visit.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SupportedByComponent, OurPartnersComponent, SpeakersComponent, AssociationPartnersComponent, MediaPartnersComponent, AboutEventComponent],
+  declarations: [HeaderComponent, SupportedByComponent, OurPartnersComponent, SpeakersComponent, AssociationPartnersComponent, MediaPartnersComponent, AboutEventComponent, WhoCanVisitComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

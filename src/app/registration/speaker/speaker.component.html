@@ -1,0 +1,246 @@
+<div class="container-fluid mt-4" >
+    <div class="co-sm-12 mb-3">
+    <div class="col-sm-12 text-center mt-2 " >
+    <h5 style="background-color: #2c707a;padding-bottom: 5px;padding-top: 5px;color: white;font-weight: 500;" >SPEAKER REGISTRATION</h5>
+    
+    </div>
+    </div>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="bk pb-4 mt-2" >
+    
+    <div class="row ml-2 " >
+    <div class="col-sm-5 mt-2">
+    <div class="row ">
+    <div class="col-sm-6" class="col-md-6">
+    <label for="exampleInputEmail1">Speaker Name</label>
+    <input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" formControlName="vc_speaker_name" class="form-control">
+    <div *ngIf="vc_speaker_name.invalid && (vc_speaker_name.dirty || vc_speaker_name.touched)"
+    >
+    
+    <div *ngIf="vc_speaker_name.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_speaker_name.errors.pattern" style="background-color:white ;color: red;">
+    accept only charactors
+    </div>
+    
+    </div>
+    </div>
+    <div class="col-sm-6">
+    <label for="exampleInputEmail1">Name of Organization</label>
+    <input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" formControlName="vc_speaker_organization" class="form-control">
+    <div *ngIf="vc_speaker_organization.invalid && (vc_speaker_organization.dirty || vc_speaker_organization.touched)">
+    
+    <div *ngIf="vc_speaker_organization.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_speaker_organization.errors.pattern" style="background-color:white ;color: red;">
+    accept only charactors
+    </div>
+    
+    </div>
+    
+    </div>
+    <div class="col-sm-6 mt-3">
+    <label for="exampleInputEmail1">Industry</label>
+    <input type="text" formControlName="vc_speaker_industry" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" class="form-control">
+    
+    <div *ngIf="vc_speaker_industry.invalid && (vc_speaker_industry.dirty || vc_speaker_industry.touched)">
+    
+    <div *ngIf="vc_speaker_industry.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_speaker_industry.errors.pattern" style="background-color:white ;color: red;">
+    accept only charactors
+    </div>
+    
+    </div>
+    </div>
+    <div class="col-sm-6 mt-3">
+    <label for="exampleInputEmail1">Designation</label>
+    <input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" formControlName="vc_speaker_designation" class="form-control">
+    <div *ngIf="vc_speaker_designation.invalid && (vc_speaker_designation.dirty || vc_speaker_designation.touched)">
+    
+    <div *ngIf="vc_speaker_designation.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_speaker_designation.errors.pattern" style="background-color:white ;color: red;">
+    accept only charactors
+    </div>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-7 mt-2">
+    <div class="row">
+    
+    <div class="col-sm-4">
+    <label for="exampleInputEmail1">City</label>
+    <input type="text" formControlName="vc_speaker_city" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" class="form-control">
+    <div *ngIf="vc_speaker_city.invalid && (vc_speaker_city.dirty || vc_speaker_city.touched)">
+    
+    <div *ngIf="vc_speaker_city.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_speaker_city.errors.pattern" style="background-color:white ;color: red;">
+    accept only charactors
+    </div>
+    
+    </div>
+    </div>
+    <div class="col-sm-4">
+    <label for="exampleInputEmail1">State</label>
+    <input type="text" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" formControlName="vc_speaker_state" class="form-control">
+    <div *ngIf="vc_speaker_state.invalid && (vc_speaker_state.dirty || vc_speaker_state.touched)">
+    
+    <div *ngIf="vc_speaker_state.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_speaker_state.errors.pattern" style="background-color:white ;color: red;">
+    accept only charactors
+    </div>
+    
+    </div>
+    </div>
+    <div class="col-sm-4">
+    <label for="exampleInputEmail1">Tel No/Mobile</label>
+    <input type="text" formControlName="vc_speaker_contact" pattern="\d*" minlength="10" maxlength="10" class="form-control">
+    <div *ngIf="vc_speaker_contact.invalid && (vc_speaker_contact.dirty || vc_speaker_contact.touched)">
+    
+    <div *ngIf="vc_speaker_contact.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_speaker_contact.errors.pattern" style="background-color:white ;color: red;">
+    accept only Digits
+    </div>
+    <div *ngIf="vc_speaker_contact.errors.minlength " style="background-color:white ;color: red;">
+    minimumm 10 Digits
+    </div>
+    </div>
+    
+    
+    </div>
+    <div class="col-sm-4 mt-3">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="text" formControlName="vc_email" class="form-control">
+    
+    <div *ngIf="vc_email.invalid && (vc_email.dirty || vc_email.touched)">
+    
+    <div *ngIf="vc_email.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_email.errors.pattern" style="background-color:white ;color: red;">
+    invalid email formate
+    </div>
+    
+    </div>
+    
+    </div>
+    <div class="col-sm-4 mt-3">
+    <label for="exampleInputEmail1">LinkedIn URL</label>
+    <input type="text" formControlName="vc_linkedin_link" class="form-control">
+    <div *ngIf="vc_linkedin_link.invalid && (vc_linkedin_link.dirty || vc_linkedin_link.touched)">
+    
+    <div *ngIf="vc_linkedin_link.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    
+    
+    </div>
+    </div>
+    <div class="col-sm-4 mt-3 ">
+    <label for="exampleInputEmail1 ">Presentation Topic</label>
+    <input type="text" formControlName="vc_presentation_topic" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" class="form-control">
+    
+    <div *ngIf="vc_presentation_topic.invalid && (vc_presentation_topic.dirty || vc_presentation_topic.touched)">
+    
+    <div *ngIf="vc_presentation_topic.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    <div *ngIf="vc_presentation_topic.errors.pattern" style="background-color:white ;color: red;">
+    accept only charactors
+    </div>
+    
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    
+    </div>
+    
+    
+    
+    <div class="row ml-4 mt-4" >
+    
+    <div class="col-sm-8 textar">
+    
+    <div class="col-sm-10 mt-2">
+    <label for="exampleInputEmail1">Brief Bio</label>
+    <textarea class="form-control" formControlName="vc_about_speaker" rows="3" id="comment"></textarea>
+    <div *ngIf="vc_about_speaker.invalid && (vc_about_speaker.dirty || vc_about_speaker.touched)">
+    
+    <div *ngIf="vc_about_speaker.errors.required" style="background-color:white ;color: red;">
+    Name is required.
+    </div>
+    
+    
+    </div>
+    
+    </div>
+    
+    
+    <div class="col-sm-12 ">
+    <div class="col-sm-12 mt-4" style="font-size: 12px; ">
+    <input class="form-check-input " type="checkbox" formControlName="check1">
+    <label class="form-check-label " for="defaultCheck1">
+    I understand that my presentation will be available on the company website for delegates to
+    download.
+    </label>
+    <br>
+    <input class="form-check-input " type="checkbox" formControlName="check2">
+    <label class="form-check-label " for="defaultCheck1">
+    I agree to submit my presentation three working days prior to Conference.
+    </label>
+    </div>
+    </div>
+    <br>
+    </div>
+    <div class="col-sm-3 text-center" style="border: 1px solid rgb(156, 153, 153);border-radius: 4px;">
+    <div class="row mt-4" style="margin-right: -15px !important;">
+    
+    <div class="col-sm-5 mb-2" style="min-height:170px">
+    <img src="../../../assets/images/man.png" *ngIf="!imageSrc" height="170px" width="250px">
+    
+    <img [src]="imageSrc" *ngIf="imageSrc" height="170px" width="250px">
+    
+    
+    </div>
+    <!-- <input type="file" class="form-control-file " id="exampleFormControlFile1" (change)="onFileChange($event)"> -->
+    <div class="file-upload">
+    <div class="file-select">
+    <div class="file-select-button" id="fileName">Upload Profile</div>
+    <div class="file-select-name" >{{fname}}</div>
+    <input type="file" formControlName="filepath" name="chooseFile" id="chooseFile" (change)="onFileChange($event)">
+    </div>
+    </div>
+    
+    </div>
+    
+    
+    </div>
+    
+    
+    </div>
+    
+    
+    
+    <div class="col-sm-12 text-center mt-2">
+    <input type="submit" [disabled]="!profileForm.valid" class="btn btn-success" value="submit">
+    
+    </div>
+    </div>
+    </form>
+    
+    </div>

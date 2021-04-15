@@ -25,7 +25,6 @@ export class VisitorComponent implements OnInit {
   }
 
   visitorData(value){
-    console.log(JSON.stringify(value));
     this.restAPI.postForm('visitor_register/',value).subscribe(res =>{
       alert(res);
     })

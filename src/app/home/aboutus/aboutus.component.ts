@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild ,ElementRef, HostListener} from '@angular/core';
 import AOS from 'aos'
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { RestApiService } from 'src/app/shared/rest-api.service';
 
 
 const style1 = style({
@@ -32,13 +33,30 @@ export class AboutusComponent implements OnInit {
   state = 'hide'
   num = 0;
 
+  stats: any;
+  companies: any;
+  governments: any;
+  speakers: any;
+  visitors: any;
+
   @ViewChild('target') target :any;
   
-  constructor(private el:ElementRef<HTMLElement>) { }
+  constructor(private el:ElementRef<HTMLElement>,
+              private restAPI : RestApiService) { }
 
   ngOnInit(): void {
 
     AOS.init();
+
+    this.restAPI.getList('stats/').subscribe(res=>{
+      this.stats = res.stats[0]
+      this.companies  = this.stats.companies
+      this.visitors =  this.stats.visitors
+      this.speakers = this.stats.speakers
+      this.governments = this.stats.governments
+    })
+
+    
 
   }
 

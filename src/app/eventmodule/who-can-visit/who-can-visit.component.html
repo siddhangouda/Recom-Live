@@ -1,0 +1,71 @@
+<div class="container-fluid" *ngFor="let element of heading ; let even = even; let odd = odd; index as i"
+[ngClass]="{ even: even, odd: odd }">
+
+<div class="gap"></div>
+
+<div class="container border1">
+<div class="row">
+<div class="col-sm-12 text-center">
+<h4 class="header1"> {{element.question}} </h4>
+
+<div class="gap"></div>
+</div>
+<div *ngIf="!element.question.includes('PARTNER') && element.question != 'WHO SHOULD ATTEND?';else el" >
+<div class="row" >
+<div class="col-sm-12 " *ngFor="let pp of element.event_points;">
+<ul class="main">
+<li class="css">
+<ol>
+<li style="text-indent: -15px;"><i class="fa fa-angle-right" aria-hidden="true"></i>
+&nbsp;&nbsp;{{pp.content}} </li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+<div #el>
+   
+<div class="row" *ngIf= "element.question.includes('PARTNER') || element.question == 'WHO SHOULD ATTEND?'" >
+<!-- <div class="row" *ngIf="element.question.contains('PARTNER') || element.question == 'WHO SHOULD ATTEND?'" > -->
+    
+<div class="col-sm-6 " *ngFor="let pp of element.event_points;">
+<ul class="main">
+<li class="css">
+<ol>
+<li style="text-indent: -15px;"><i class="fa fa-angle-right" aria-hidden="true"></i>
+&nbsp;&nbsp;{{pp.content}}</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+<!-- <div class="row" *ngIf="element.question == 'WHO CAN PARTNER?' || element.question == 'WHO SHOULD ATTEND?' ">
+<div class="col-sm-6 " *ngFor="let pp of element.event_points;" >
+<ul class="main">
+
+<li class="css" >
+
+<ol>
+<li>{{pp.content}}</li>
+</ol>
+</li>
+
+</ul>
+</div>
+</div> -->
+</div>
+<div class="gap"></div>
+
+<!-- <ul>
+
+<li *ngFor="let element of jsonArray; let even = even; let odd = odd"
+[ngClass]="{ even: even, odd: odd }">
+{{odd}}, {{element.username}}, {{element.uid}}, {{element.age}}</li>
+
+</ul> -->
+</div>
+</div>

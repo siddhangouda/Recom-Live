@@ -1,0 +1,250 @@
+<div class="container my-5">
+    <div class="col-sm-12 text-center">
+    <h3>You Are Updating For Main Event : {{master_id}}</h3></div>
+    <div class="container" *ngIf="showChild ==  true">
+        <div class="col-sm-12 ">
+
+            <div class="col-sm-12 text-center">
+            <h3>Enter Sub event Details : </h3></div>
+        </div>
+<div class="gap"></div>
+        <form [formGroup]="masterForm">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" formControlName="vc_event_title" ngModel minlength="5" maxlength="80"
+                        placeholder="Event Title">
+                </div>
+                <div class="col">
+
+                <input type="number" class="form-control" formControlName="db_registrationTotal_physical" ngModel minlength="1"
+                    maxlength="50" placeholder="Physical Event Amount">
+                    </div>
+                <div class="col">
+
+                <input type="number" class="form-control" formControlName="db_registrationTotal_virtual" ngModel minlength="1" maxlength="50"
+                    placeholder="Vertul Event Amount">
+                    </div>
+
+                    <div class="col">
+
+                        <input type="date" class="form-control" formControlName="dt_event_end_date" ngModel minlength="1" maxlength="50"
+                            placeholder="Vertul Event Amount">
+                            </div>
+                <div class="col-md-12">
+                    
+                <textarea type="text" class="form-control" formControlName="vc_description" ngModel minlength="1" maxlength="50"
+                    placeholder="description"></textarea>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                <button class="btn btn-primary" type="submit" (click)="sendChildData()"> Submit </button>
+            </div>
+            </div>
+        </form>
+
+    </div>
+
+
+    <h3> you are Entering for child : {{child_Id}} </h3>
+
+    <button class="btn btn-primary a1" (click)="showAssociation()" [disabled]="!child_Id"> Association</button>
+    <button class="btn btn-primary a1" (click)="showSpeakers()" [disabled]="!child_Id">Speakers</button>
+    <button class="btn btn-primary a1" (click)="showPartners()" [disabled]="!child_Id">Partner</button>
+    <button class="btn btn-primary a1" (click)="showSupported()" [disabled]="!child_Id">supported BY </button>
+    <button class="btn btn-primary a1" (click)="showMedias()" [disabled]="!child_Id">Media Partner</button>
+
+    <div *ngIf="showAsso == true">
+        <form [formGroup]="associationForm">
+
+            <input type="text" formControlName="ch_name" ngModel minlength="5" maxlength="80"
+                placeholder="Association Name">
+            <input type="file" name="profile" formControlName="file" ngModel minlength="1" maxlength="50"
+                placeholder="upload img" (change)="uploadAssociationFile($event)">
+            <input type="text" formControlName="vc_link" ngModel minlength="1" maxlength="50" placeholder="URL">
+            <button class="btn btn-primary" type="submit" (click)="addData()"> add Association </button>
+        </form>
+
+        <div>
+
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>URL</th>
+                    <th>LINK</th>
+                    <th>Child Event ID</th>
+                    <th>action</th>
+                </tr>
+
+                <tr *ngFor="let data of listData; index as i">
+                    <td> {{data.ch_name}} </td>
+                    <td> {{data.vc_img_url}}</td>
+                    <td>{{data.vc_link}}</td>
+                    <td> {{data.event_id}} </td>
+                    <td> <button class="btn btn-primary" (click)="deleteItem(i)"> delete</button></td>
+                </tr>
+            </table>
+        </div>
+        <button class="btn btn-primary" (click)="sendAssociation()" [disabled] ="listData.length == 0"> Sumbit</button>
+    </div>
+
+    <div *ngIf="showSpeaker == true">
+        <form [formGroup]="speakerForm">
+            <input type="text" formControlName="vc_speaker_name" ngModel minlength="5" maxlength="40"
+                placeholder="Speaker Name">
+            Speaker Image :<input type="file" formControlName="file1" ngModel minlength="1" maxlength="50"
+                placeholder="upload img" (change)="uploadSpeakerFile($event)" accept="image/x-png,image/gif,image/jpeg">
+            <input type="text" formControlName="vc_designation" ngModel minlength="1" maxlength="50"
+                placeholder="Designation">
+            <input type="text" formControlName="vc_linkedin_link" ngModel minlength="1" maxlength="50"
+                placeholder="linked in URL">
+            <input type="text" formControlName="vidio_url" ngModel minlength="1" maxlength="50" placeholder="Video URL">
+            Upload PPT : <input type="file" formControlName="file2" ngModel minlength="1" maxlength="50"
+                placeholder="ppt" (change)="uploadPresentationFile($event)">
+            <textarea formControlName="vc_about_speaker" placeholder="About Speaker"></textarea>
+            <button class="btn btn-primary" type="submit" (click)="addSpeaker()"> Add Speaker </button>
+        </form>
+
+        <div>
+
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Img URL</th>
+                    <th>Designation</th>
+                    <th>about speaker</th>
+                    <th>linkedin link</th>
+                    <th>video url</th>
+                    <th>presentation</th>
+                    <th>Child id</th>
+                    <th>Action</th>
+                </tr>
+
+                <tr *ngFor="let data of speakerList; index as i">
+                    <td> {{data.vc_speaker_name}} </td>
+                    <td> {{data.file1}}</td>
+                    <td>{{data.vc_designation}}</td>
+                    <td> {{data.vc_about_speaker}} </td>
+                    <td> {{data.vc_linkedin_link}} </td>
+                    <td> {{data.vidio_url}} </td>
+                    <td> {{data.file2}} </td>
+                    <td> {{data.event_id}} </td>
+                    <td> <button class="btn btn-primary" (click)="deleteSpeaker(i)"> delete</button></td>
+                </tr>
+            </table>
+        </div>
+        <button class="btn btn-primary" (click)="sendSpeaker()" [disabled]="speakerList.length == 0"> Sumbit</button>
+
+    </div>
+
+    <div *ngIf="showPartner == true">
+        <form [formGroup]="partnerForm">
+            <input type="text" formControlName="vc_partner_name" ngModel minlength="5" maxlength="40"
+                placeholder="Parner Name">
+            upload image :<input type="file" formControlName="vc_partner_logo_link" ngModel minlength="1" maxlength="50"
+                placeholder="upload img" (change)="uploadPartnerFile($event)" accept="image/x-png,image/gif,image/jpeg">
+            <input type="text" formControlName="vc_partner_website_url" ngModel minlength="1" maxlength="50"
+                placeholder="Website URL">
+            Select partner type : <select formCont rolName="vc_partner_type" id="vc_partner_type" ngModel>
+                <option value="Silver" ngValue>Silver Partner</option>
+                <option value="Gold" ngValue>Gold Partner</option>
+                <option value="Associate" ngValue>Associate Partner</option>
+                <option value="Digital" ngValue>Digital Partner</option>
+                <option value="Platinum" ngValue>Platinum Partner</option>
+            </select>
+            <button class="btn btn-primary" type="submit" (click)="addPartner()"> add Partner </button>
+        </form>
+
+        <div>
+
+            <table>
+                <tr>
+                    <th>Parner Name</th>
+                    <th>upload img</th>
+                    <th>Website URL</th>
+                    <th>Select partner type</th>
+                    <th>Event ID</th>
+                    <th>action</th>
+                </tr>
+
+                <tr *ngFor="let data of partnerList; index as i">
+                    <td> {{data.vc_partner_name}} </td>
+                    <td> {{data.vc_partner_logo_link}}</td>
+                    <td>{{data.vc_partner_website_url}}</td>
+                    <td>{{data.vc_partner_type}}</td>
+                    <td> {{data.event_id}} </td>
+                    <td> <button class="btn btn-primary" (click)="deletePartner(i)"> delete</button></td>
+                </tr>
+            </table>
+        </div>
+        <button class="btn btn-primary" (click)="sendPartner()" [disabled]="partnerList.length == 0"> Submit</button>
+
+
+    </div>
+
+
+    <div *ngIf="showSupport == true">
+        <form [formGroup]="supportedbyForm">
+            <input type="text" formControlName="vc_comapany_name" ngModel minlength="5" maxlength="80"
+                placeholder="Supportedby Name">
+            upload image : <input type="file" formControlName="vc_logo_link" ngModel minlength="1" maxlength="50"
+                placeholder="upload img" (change)="uploadSupporter($event)" accept="image/x-png,image/gif,image/jpeg">
+            <input type="text" formControlName="vc_company_url" ngModel minlength="1" maxlength="50" placeholder="URL">
+            <button class="btn btn-primary" type="submit" (click)="addSupporter()"> Add Supporter </button>
+        </form>
+
+        <div>
+
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>image url</th>
+                    <th>company link</th>
+                    <th>Child Event ID</th>
+                    <th>action</th>
+                </tr>
+
+                <tr *ngFor="let data of supportList; index as i">
+                    <td> {{data.vc_comapany_name}} </td>
+                    <td> {{data.vc_logo_link}}</td>
+                    <td>{{data.vc_company_url}}</td>
+                    <td> {{data.event_id}} </td>
+                    <td> <button class="btn btn-primary" (click)="deleteSupport(i)"> delete</button></td>
+                </tr>
+            </table>
+        </div>
+        <button class="btn btn-primary" (click)="sendSupport()" [disabled]="supportList.length == 0"> Submit</button>
+    </div>
+
+    <div *ngIf="showMedia == true">
+        <form [formGroup]="mediaForm">
+            <input type="text" formControlName="vc_comapany_name" ngModel minlength="5" maxlength="80"
+                placeholder="Media Name">
+            upload image : <input type="file" formControlName="vc_logo_link" ngModel minlength="1" maxlength="50"
+                placeholder="upload img" (change)="uploadMedia($event)" accept="image/x-png,image/gif,image/jpeg">
+            <input type="text" formControlName="vc_company_url" ngModel minlength="1" maxlength="50" placeholder="URL">
+            <button class="btn btn-primary" type="submit" (click)="addMedia()"> Add Media </button>
+        </form>
+
+        <div>
+
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>image url</th>
+                    <th>company link</th>
+                    <th>Child Event ID</th>
+                    <th>action</th>
+                </tr>
+
+                <tr *ngFor="let data of mediaList; index as i">
+                    <td> {{data.vc_comapany_name}} </td>
+                    <td> {{data.vc_logo_link}}</td>
+                    <td>{{data.vc_company_url}}</td>
+                    <td> {{data.event_id}} </td>
+                    <td> <button class="btn btn-primary" (click)="deleteMedia(i)"> delete</button></td>
+                </tr>
+            </table>
+        </div>
+        <button class="btn btn-primary" (click)="sendMedia()" [disabled]="mediaList.length == 0"> Submit</button>
+    </div>
+
+</div>

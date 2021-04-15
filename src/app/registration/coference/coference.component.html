@@ -1,345 +1,490 @@
-<div class="col-sm-12" style="background: #f2f2f2;">
-    <div class="gap"></div>
-    <form #conferenceForm='ngForm' (ngSubmit)="conferenceData(conferenceForm.value, conferenceForm)">
-        <div class="form-row">
+<div class="row">
 
-            <!-- firstName validator  -->
-            <div class="col">
-                <input type="text" class="form-control" placeholder="First name" name="ch_firstname"
-                    [(ngModel)]="firstName" #firstNameValidator="ngModel" required minlength="3" maxlength="20"
-                    pattern="[a-zA-Z ]{1,20}">
-
-                <div class="form-control-feedback" *ngIf="firstNameValidator.invalid && firstNameValidator.touched">
-                    <div *ngIf="firstNameValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="firstNameValidator.errors.minlength">
-                        *Name must be at least 3 characters long.
-                    </div>
-                    <div *ngIf="firstNameValidator.errors.pattern">
-                        *Only characters are allowed
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- last name validator  -->
-
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Last name" name="ch_lastname"
-                    [(ngModel)]="lastName" #lastNameValidator="ngModel" required minlength="3" maxlength="20"
-                    pattern="[a-zA-Z ]{1,20}">
-
-                <div class="form-control-feedback" *ngIf="lastNameValidator.invalid && lastNameValidator.touched">
-                    <div *ngIf="lastNameValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="lastNameValidator.errors.minlength">
-                        *Must be at least 3 characters long.
-                    </div>
-                    <div *ngIf="lastNameValidator.errors.pattern">
-                        *Only characters are allowed
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-row">
-
-            <!-- company name validator  -->
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Company Name" name="vc_company"
-                    [(ngModel)]="companyName" #companyNameValidator="ngModel" required minlength="3" maxlength="20"
-                    pattern="[a-zA-Z 0-9]{1,20}">
-
-                <div class="form-control-feedback" *ngIf="companyNameValidator.invalid && companyNameValidator.touched">
-                    <div *ngIf="companyNameValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="companyNameValidator.errors.minlength">
-                        *Must be at least 3 characters long.
-                    </div>
-                    <div *ngIf="companyNameValidator.errors.pattern">
-                        *Only characters are allowed
-                    </div>
-                </div>
-            </div>
-
-            <!-- designation validator  -->
-
-
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Designation" name="vc_designation"
-                    [(ngModel)]="designation" #designationValidator="ngModel" required minlength="3" maxlength="20"
-                    pattern="[a-zA-Z 0-9]{1,20}">
-
-                <div class="form-control-feedback" *ngIf="designationValidator.invalid && designationValidator.touched">
-                    <div *ngIf="designationValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="designationValidator.errors.minlength">
-                        *Must be at least 3 characters long.
-                    </div>
-                    <div *ngIf="designationValidator.errors.pattern">
-                        *Only characters are allowed
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-row">
-
-            <!-- email field validator  -->
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Email" name="vc_email" [(ngModel)]="email"
-                    #emailValidator="ngModel" required minlength="5" maxlength="30"
-                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$">
-
-                <div class="form-control-feedback" *ngIf="emailValidator.invalid && emailValidator.touched">
-                    <div *ngIf="emailValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="emailValidator.errors.minlength">
-                        *Must be at least 5 characters long.
-                    </div>
-                    <div *ngIf="emailValidator.errors.pattern">
-                        *should be like @companyName.com
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- phone validator -->
-
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Phone Number" name="vc_phonenumber"
-                    [(ngModel)]="phone" #phoneValidator="ngModel" required minlength="10" maxlength="10"
-                    pattern="[0-9]{1,10}">
-
-                <div class="form-control-feedback" *ngIf="phoneValidator.invalid && phoneValidator.touched">
-                    <div *ngIf="phoneValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="phoneValidator.errors.minlength">
-                        *Must have 10 Digits long.
-                    </div>
-                    <div *ngIf="phoneValidator.errors.pattern">
-                        *Only Numbers are allowed
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Billing detais label -->
-
-        <div class="col-sm-12">
-
-            <h6>Billing Details:</h6>
-
-        </div>
-
-        <!-- billiing address -->
-
-        <div class="col">
-            <textarea class="form-control" rows="2" type="text" class="form-control" placeholder="Address"
-                name="address" #addressValidator="ngModel" required minlength="3" maxlength="100" ngModel></textarea>
-
-            <div class="form-control-feedback" *ngIf="addressValidator.invalid && addressValidator.touched">
-
-                <div *ngIf="addressValidator.errors.required">
-                    *This field is required.
-                </div>
-                <div *ngIf="addressValidator.errors.minlength">
-                    *address must be at least 3 characters long.
-                </div>
-
-            </div>
-        </div>
-
-
-
-        <!-- city validator -->
-
-        <div class="form-row">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="City" name="vc_city" [(ngModel)]="city"
-                    #cityValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
-
-                <div class="form-control-feedback" *ngIf="cityValidator.invalid && cityValidator.touched">
-
-                    <div *ngIf="cityValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="cityValidator.errors.minlength">
-                        *Name must be at least 3 characters long.
-                    </div>
-                    <div *ngIf="cityValidator.errors.pattern">
-                        *Only characters are allowed
-                    </div>
-                </div>
-            </div>
-
-            <!-- state validator  -->
-
-            <div class="col">
-                <input type="text" class="form-control" placeholder="State" name="vc_state" [(ngModel)]="state"
-                    #stateValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
-
-                <div class="form-control-feedback" *ngIf="stateValidator.invalid && stateValidator.touched">
-                    <div *ngIf="stateValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="stateValidator.errors.minlength">
-                        *Name must be at least 3 characters long.
-                    </div>
-                    <div *ngIf="stateValidator.errors.pattern">
-                        *Only characters are allowed
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-        <!-- purpose of registration  -->
-        <div class="col my-3">
-            <textarea class="form-control" rows="2" placeholder="Purpose of Registration" name="purpose"
-                ngModel></textarea>
-        </div>
-
-        <!-- hidden data to send -->
-        <div class="col my-3">
-            <input class="form-control" rows="2" placeholder="Purpose of Registration" name="register_for" value={{id}}
-                [(ngModel)]="id" ngModel hidden>
-        </div>
-
-        <!-- amount -->
-
-        <div class="form-row">
-            <div class="col">
-                <input #amount1="ngModel" type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
-                    [(ngModel)]="amount" required minlength="3" maxlength="20" readonly>
-
-
-            </div>
-
-            <input type="text" class="form-control" placeholder="{{amount}}" name="total_amount" [(ngModel)]="amount"
-                required minlength="3" maxlength="20" style="display: none;">
-
-
-
-
-            <!-- GST validator  -->
-
-            <div class="col">
-                <input type="text" class="form-control" placeholder="GST Number/PAN Card Number" name="gst_no"
-                    #gstValidator="ngModel" required minlength="10" maxlength="15" pattern="[a-zA-Z1-9]{1,20}" ngModel>
-
-                <div class="form-control-feedback" *ngIf="gstValidator.invalid && gstValidator.touched">
-                    <div *ngIf="gstValidator.errors.required">
-                        *This field is required.
-                    </div>
-                    <div *ngIf="gstValidator.errors.minlength">
-                        *Must be at least 10 characters long.
-                    </div>
-                    <div *ngIf="gstValidator.errors.pattern">
-                        *Space or spacial characters not allowed
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Coupon checking -->
-
-
-       
+    <div class="col-sm-4 mobmargin">
 
         <div class="row">
-            <div class="col-sm-12 text-center">
-                <button type="submit" class="btn btn-primary btn-lg" [disabled]="conferenceForm.valid"> Submit </button>
+            <div class="col-sm-2"></div>
+
+            <div class="col sm-8">
+
+                <div class="row"> <img src="./assets/images/man.png" width="100%"></div>
+                <div class="row quote"> "If you really want to grow as an entrepreneur, you've got to learn to<b>
+                        delegate.</b>" — Richard Branson.</div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+
+    <div class="col-sm-7" style="background: #f2f2f2;">
+        <div class="gap"></div>
+        <form #conferenceForm='ngForm' (ngSubmit)="conferenceData(conferenceForm.value, conferenceForm)">
+            <div class="form-row">
+
+                <!-- firstName validator  -->
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="First name" name="ch_firstname"
+                        [(ngModel)]="firstName" #firstNameValidator="ngModel" required minlength="3" maxlength="20"
+                        pattern="[a-zA-Z ]{1,20}">
+
+                    <div class="form-control-feedback" *ngIf="firstNameValidator.invalid && firstNameValidator.touched">
+                        <div *ngIf="firstNameValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="firstNameValidator.errors.minlength">
+                            *Name must be at least 3 characters long.
+                        </div>
+                        <div *ngIf="firstNameValidator.errors.pattern">
+                            *Only characters are allowed
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- last name validator  -->
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name" name="ch_lastname"
+                        [(ngModel)]="lastName" #lastNameValidator="ngModel" required minlength="1" maxlength="20"
+                        pattern="[a-zA-Z ]{1,20}">
+
+                    <div class="form-control-feedback" *ngIf="lastNameValidator.invalid && lastNameValidator.touched">
+                        <div *ngIf="lastNameValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="lastNameValidator.errors.minlength">
+                            *Must be at least 3 characters long.
+                        </div>
+                        <div *ngIf="lastNameValidator.errors.pattern">
+                            *Only characters are allowed
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+
+                <!-- company name validator  -->
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Company Name" name="vc_company"
+                        [(ngModel)]="companyName" #companyNameValidator="ngModel" required minlength="3" maxlength="20"
+                        pattern="[a-zA-Z 0-9]{1,20}">
+
+                    <div class="form-control-feedback"
+                        *ngIf="companyNameValidator.invalid && companyNameValidator.touched">
+                        <div *ngIf="companyNameValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="companyNameValidator.errors.minlength">
+                            *Must be at least 3 characters long.
+                        </div>
+                        <div *ngIf="companyNameValidator.errors.pattern">
+                            *Only characters are allowed
+                        </div>
+                    </div>
+                </div>
+
+                <!-- designation validator  -->
+
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Designation" name="vc_designation"
+                        [(ngModel)]="designation" #designationValidator="ngModel" required minlength="3" maxlength="20"
+                        pattern="[a-zA-Z 0-9]{1,20}">
+
+                    <div class="form-control-feedback"
+                        *ngIf="designationValidator.invalid && designationValidator.touched">
+                        <div *ngIf="designationValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="designationValidator.errors.minlength">
+                            *Must be at least 3 characters long.
+                        </div>
+                        <div *ngIf="designationValidator.errors.pattern">
+                            *Only characters are allowed
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+
+                <!-- email field validator  -->
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Email" name="vc_email" [(ngModel)]="email"
+                        #emailValidator="ngModel" required minlength="5" maxlength="30"
+                        pattern="^[A-Za-z0-9_.%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,4}$">
+
+                    <div class="form-control-feedback" *ngIf="emailValidator.invalid && emailValidator.touched">
+                        <div *ngIf="emailValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="emailValidator.errors.minlength">
+                            *Must be at least 5 characters long.
+                        </div>
+                        <div *ngIf="emailValidator.errors.pattern">
+                            *should be like @companyName.com
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- phone validator -->
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Phone Number" name="vc_phonenumber"
+                        [(ngModel)]="phone" #phoneValidator="ngModel" required minlength="10" maxlength="10"
+                        pattern="[0-9]{1,10}">
+
+                    <div class="form-control-feedback" *ngIf="phoneValidator.invalid && phoneValidator.touched">
+                        <div *ngIf="phoneValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="phoneValidator.errors.minlength">
+                            *Must have 10 Digits long.
+                        </div>
+                        <div *ngIf="phoneValidator.errors.pattern">
+                            *Only Numbers are allowed
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Billing detais label -->
+
+            <div class="col-sm-12">
+
+                <h6>Billing Details:</h6>
+
+            </div>
+
+
+
+
+            <!-- city validator -->
+
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="City" name="vc_city" [(ngModel)]="city"
+                        #cityValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
+
+                    <div class="form-control-feedback" *ngIf="cityValidator.invalid && cityValidator.touched">
+
+                        <div *ngIf="cityValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="cityValidator.errors.minlength">
+                            *Name must be at least 3 characters long.
+                        </div>
+                        <div *ngIf="cityValidator.errors.pattern">
+                            *Only characters are allowed
+                        </div>
+                    </div>
+                </div>
+
+                <!-- state validator  -->
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="State" name="vc_state" [(ngModel)]="state"
+                        #stateValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}">
+
+                    <div class="form-control-feedback" *ngIf="stateValidator.invalid && stateValidator.touched">
+                        <div *ngIf="stateValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="stateValidator.errors.minlength">
+                            *Name must be at least 3 characters long.
+                        </div>
+                        <div *ngIf="stateValidator.errors.pattern">
+                            *Only characters are allowed
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- hidden data to send -->
+            <div class="col my-3">
+                <input class="form-control" rows="2" placeholder="Purpose of Registration" name="register_for"
+                    value={{id}} [(ngModel)]="id" ngModel hidden>
+            </div>
+
+            <!-- amount -->
+
+            <div class="form-row">
+                <div class="col">
+                    <input #amount1="ngModel" type="text" class="form-control" placeholder="{{amount}}"
+                        name="total_amount" [(ngModel)]="amount" required minlength="3" maxlength="20" readonly>
+
+
+                </div>
+
+                <input type="text" class="form-control" placeholder="{{amount}}" name="total_amount"
+                    [(ngModel)]="amount" required minlength="3" maxlength="20" style="display: none;">
+
+
+
+
+                <!-- GST validator  -->
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="GST Number/PAN Card Number" name="gst_no"
+                        #gstValidator="ngModel" required minlength="10" maxlength="15" pattern="[a-z0-9A-Z0-9]{1,20}"
+                        ngModel>
+
+                    <div class="form-control-feedback" *ngIf="gstValidator.invalid && gstValidator.touched">
+                        <div *ngIf="gstValidator.errors.required">
+                            *This field is required.
+                        </div>
+                        <div *ngIf="gstValidator.errors.minlength">
+                            *Must be at least 10 characters long.
+                        </div>
+                        <div *ngIf="gstValidator.errors.pattern">
+                            *Space or spacial characters not allowed
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Coupon checking -->
+
+            <!-- billiing address -->
+
+            <div class="col">
+                <textarea class="form-control" rows="2" type="text" class="form-control" placeholder="Address"
+                    name="address" #addressValidator="ngModel" required minlength="3" maxlength="100"
+                    ngModel></textarea>
+
+                <div class="form-control-feedback" *ngIf="addressValidator.invalid && addressValidator.touched">
+
+                    <div *ngIf="addressValidator.errors.required">
+                        *This field is required.
+                    </div>
+                    <div *ngIf="addressValidator.errors.minlength">
+                        *address must be at least 3 characters long.
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- purpose of registration  -->
+            <div class="col my-3">
+                <textarea class="form-control" rows="2" placeholder="Purpose of Registration" name="purpose" ngModel
+                    required></textarea>
+            </div>
+
+
+
+
+            <!-- term and conditions -->
+            <div class="row">
+                <div class="col-sm-6 text-right tearm">
+                    <input style="width: 10%;" class="col-sm-6 text-right " type="checkbox" label="Terms and conditions"
+                        name="terms" required ngModel>
+                </div>
+                <div class="col-sm-6 text-left mt-2 tearm1" style="margin-left: -30px;"> <label for="terms"
+                        (click)="showDialog()"><u> Terms and Conditions</u></label></div>
+            </div>
+            <!-- term and conditions ends -->
+
+
+
+            <div class="row ">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg"> Submit </button>
+                    <!-- [disabled]="!conferenceForm.valid" -->
+                </div>
+            </div>
+        </form>
+        <div class="gap"></div>
+    </div>
+
+    <!-- <button (click)="pushRecords()">click</button> -->
+
+    <p-dialog header="  Terms and Conditions  " [(visible)]="display" [style]="{width: '60vw'}">
+
+        The “Organizers”, “Urdhva Management Pvt. Ltd.”and the ‘_____________________________’ agree to
+        and abide by the following terms and conditions. <br><br>
+
+        <ul style="list-style-type: decimal;">
+            <li> Company hereby agrees to participate as a delegate at _____________________________________.
+                In the event of a conflict between the Rules and Regulations for delegates, this Contract shall take
+                precedence. In the event of unforeseen circumstances & situations, it shall arise, Urdhva Management
+                Pvt. Ltd. reserves the right to make changes to the event including dates, times, and location. The
+                Urdhva
+                Management Pvt. Ltd. shall make commercially reasonable efforts to inform the participating company
+                of any changes within a reasonable timeframe; provided, however, that in no event shall its employees,
+                officers, directors, affiliates, or agents be liable for any damages arising from such changes or
+                notice.
+            </li>
+            <li> Immediately upon request from the Urdhva Management Pvt. Ltd, company shall remove any
+                delegate (or element thereof) that, in the event, is deemed objectionable, unsafe, or detracts from the
+                expo show floor because of noise, method of operation, or any other reason. Urdhva Management Pvt.
+                Ltd reserves the right to remove or have removed any such delegate (or element thereof) at its sole
+                discretion. In no event shall any Urdhva Management Pvt. Ltd employee is liable for any refund or other
+                damages or expenses incurred by Company in connection with or arising out of any actions taken by
+                Urdhva Management Pvt. Ltd according to this Section
+            </li>
+            <li>.Urdhva Management Pvt. Ltd assumes no responsibility or liability for any of the products and/or
+                services delivered at the exhibition.
+            </li>
+            <li>. The validity, construction, and interpretation of the Company's participation and the obligations of
+                the
+                parties hereto shall be governed by and construed under the laws of the Republic of India, without
+                regard to its choice of law principles. Participating Company agrees to comply with all applicable
+                Indian
+                national, state, and local laws and regulations.
+            </li>
+            <li>. Company acknowledges and understands that Urdhva Management Pvt. Ltd does not maintain
+                insurance covering Company's property and it is the sole responsibility of the Company to obtain such
+                insurance
+            </li>
+            <li>. Subject to the terms outlined in Section 9, upon execution of this Contract, the Company agrees to
+                pay the fee identified on the attached cover sheet. The contract will be countersigned and become
+                binding on the parties. Urdhva Management Pvt. Ltd shall invoice Company, Through Urdhva
+                Management Pvt. Ltd for the fee receipt of contract and payments will be due within 3(Three) calendar
+                days from the Company's receipt of this invoice. Payment will be due immediately upon receipt of
+                invoice if this Contract is executed before 8(Eight) calendar days.
+            </li>
+            <li>. When Company executes and delivers this Contract, it will be countersigned by Urdhva Management
+                Pvt. Ltd and become binding on the parties. Company may cancel this Contract on or before
+                ____________________by providing written notice to Urdhva Management Pvt. Ltd, provided, however,
+                that the Company understands and agrees that such cancellation will be subject to a cancellation fee in
+                the amount of fifty percent (50%) of the Contract Fee (the "Cancellation Fee") as liquidated damages and
+                not as a penalty. In the event, Company cancels this Contract, Urdhva Management Pvt. Ltd shall refund
+            </li><br><br>
+
+            to Company any fees previously paid less the Cancellation Fee, if any, within 7 days of receipt of the
+            cancellation notice. If Company has not previously paid any fees to Urdhva Management Pvt. Ltd at the
+            time of cancellation, Company shall pay to Urdhva Management Pvt. Ltd an amount equal to the
+            Cancellation Fee within 15 days receipt of an invoice therefore. The company must provide notice of
+            cancellation in writing to Urdhva Management Pvt. Ltd. Cancellation Fees, if any, will be calculated on
+            the date the notice of cancellation is received. Urdhva Management Pvt. Ltd may cancel this Contract at
+            any time for convenience. Upon such cancellation for convenience by Urdhva Management Pvt. Ltd shall
+            refund any fees previously paid by Company under this Contract.
+
+            <li>. Neither party shall be held responsible for any delay or failure in performance of its obligations
+                hereunder to the extent such delay or failure is caused by fire, flood, strike, civil, Governmental or
+                Military Authority, Acts of God, Acts of Terrorism, Acts of war, Epidemics, the Unavailability of the
+                Venue
+                or other similar causes beyond its reasonable control and without the fault or negligence of the delayed
+                or non-performing party or its subcontractors.
+            </li>
+            <li>. Urdhva Management Pvt. Ltd shall not be liable to the company for any damage, loss, harm, or injury
+                to the company or its property or business resulting from any reason whatsoever in connection with the
+                event. In furtherance and not in limitation of the foregoing, Urdhva Management Pvt. Ltd shall in no
+                event be liable for any indirect, incidental, special, or consequential damages, or damages for loss of
+                profits, revenue, data, or use incurred by delegate, whether in action in contract or tort, even if
+                Urdhva
+                Management Pvt. Ltd has been advised of the possibility of such damages. Urdhva Management Pvt.
+                Ltd's entire liability for damages hereunder shall in no event exceed the number of fees paid by the
+                company under this contract.
+            </li>
+            <li>. Company agrees to indemnify, defend and hold Urdhva Management Pvt. Ltd harmless against all
+                claims, demands, costs, liabilities, losses or damages (including all reasonable attorneys’ fees) to
+                persons
+                or property, arising out of or caused by a) Company’s participation in the exhibition and conference or
+                (b) the gross negligence or willful misconduct of Company and its employees, agents or representatives.
+            </li>
+            <li>. This Contract constitutes the entire understanding between Urdhva Management Pvt. Ltd, delegate
+                concerning the subject matter hereof. Terms and conditions outlined in any purchase order or other
+                document provided by Participating Company to Urdhva Management Pvt. Ltd that differ from, conflict
+                with, or are not included in this Contract shall not be part of any agreement between Urdhva
+                Management Pvt. Ltd and Partner Company unless specifically accepted by Urdhva Management Pvt. Ltd
+                in writing. No failure or delay by any party in exercising any right and remedy shall operate as a
+                waiver
+                thereof, and a waiver of a particular right or remedy on one occasion shall not be deemed a waiver of
+                any other right or remedy or a waiver on any subsequent occasion </li>
+        </ul>
+    </p-dialog>
+
+    <p-dialog header="alret!!" [(visible)]="payment">
+        {{razorpayResponse}}
+    </p-dialog>
+
+    <p-dialog header="    " [(visible)]="addOns" [style]="{width: '90vw'}">
+
+        <div class="row">
+            <div class="col-sm-7">
+
+                <b>Select your events</b>
+
+
+
+                <form [formGroup]="checkForm" (ngSubmit)="onSubmit()">
+                    <div class="col" *ngFor="let child of childData; index as i ">
+                        <div class="row">
+                            <div class="col-sm-6 text-right tearm">
+                                <input class="checkbok" type="checkbox" (change)="onSubmit1()" value="false"
+                                    [formControlName]="i">
+                            </div>
+
+                            <div class="col-sm-6 text-left mt-2 tearm1" style="margin-left: -20px;">
+                                <label for="child"> {{child.vc_event_title }} </label><br>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="col-sm-4 " style="font-size: 13px;"> Your Total Billing Amount:
+                <div class="row"><br></div>
+                <table>
+                    <tr>
+                        <td>Total Amount :</td>
+                        <td>{{totalAmount | number : '1.2-2'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Discount : -</td>
+                        <td> {{discountAmount | number : '1.2-2'}}</td>
+                    </tr>
+
+                    <hr>
+                    <tr>
+                        <td>Coupon Discount</td>
+                        <td> {{couponDiscount | number : '1.2-2'}}</td>
+                    </tr>
+                    <hr>
+                    <tr>
+                        <td>Payable Amount :</td>
+                        <td>{{payableAmount | number : '1.2-2'}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 pt-3 pl-5">
+                    <h6>Have Coupon ?</h6>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Please Enter The Coupon" name="coupon" required
+                        minlength="0" maxlength="15" [(ngModel)]="coupon">
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary mt-3" (click)="addCoupon(coupon)" [disabled]="!coupon">
+                        Check</button>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="gap"></div>
+        <div class="row  text-center">
+            <div class="col-sm-12  text-center">
+                <button pButton label="Proceed To Pay" style="width: 90%;" class="p-button-raised p-button-rounded"
+                    (click)="payNow()" [disabled]="selectedCheckBox.length == 0 "></button>
             </div>
         </div>
-    </form>
-    <div class="gap"></div>
+    </p-dialog>
+    <p-toast position="center" key="bc"></p-toast>
+
 </div>
-   
-<!-- <button (click)="pushRecords()">click</button> -->
-
-<p-dialog header="alret!!" [(visible)]="display">
-    {{content}}
-</p-dialog>
-
-<p-dialog header="alret!!" [(visible)]="payment">
-    {{razorpayResponse}}
-</p-dialog>
-
-<p-dialog header="    " [(visible)]="addOns" [style]="{width: '50vw'}">
-
-    <div class="row">
-        <div class="col-sm-7">
-
-            <b>Select your events</b>
-
-
-
-            <form [formGroup]="checkForm" (ngSubmit)="onSubmit()">
-              
-                <div class="col" *ngFor="let child of childData" >
-                    <input class="checkbok" type="checkbox"(change)="onSubmit1()" name="child" value="child.vc_event_title"
-                        [formControlName]="child.id">
-                    <label for="child"> {{child.vc_event_title }} </label><br>
-                </div>
-            
-            </form>
-        
-           
-        </div>
-
-        <div class="col-sm-4 " style="font-size: 13px;"> Your Total Billing Amount:
-        <div class="row"><br></div>
-        <table>
-            <tr>
-                <td>Total Amount :</td> <td>{{totalAmount | number : '1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>Discount  : -</td> <td>  {{discountAmount | number : '1.2-2'}}</td>
-            </tr>
-
-            <hr>
-            <tr>
-                <td>Coupon Discount</td> <td> {{couponDiscount | number : '1.2-2'}}</td>
-            </tr>
-           <hr>
-            <tr>
-                <td>Payable Amount  :</td> <td>{{payableAmount | number : '1.2-2'}}</td>
-            </tr>
-        </table></div>
-
-        <div class="row">
-            <div class="col-sm-4 pt-3 pl-5">
-                <h6>Have Coupon ?</h6>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" placeholder="Please Enter The Coupon" name="coupon" required
-                    minlength="0" maxlength="15" [(ngModel)]="coupon">
-            </div>
-            <div class="col-sm-2">
-                <div class="btn btn-primary mt-3" (click)="addCoupon(coupon)"> Check</div>
-
-            </div>
-        </div>
-
-    </div>
-    <div class="gap"></div>
-    <div class="row  text-center">
-        <div class="col-sm-12  text-center">
-            <button pButton  label="Proceed To Pay" style="width: 90%;"
-                class="p-button-raised p-button-rounded" (click)="payNow()"></button>
-        </div>
-    </div>
-</p-dialog>

@@ -12,6 +12,7 @@ export class AssociationPartnersComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

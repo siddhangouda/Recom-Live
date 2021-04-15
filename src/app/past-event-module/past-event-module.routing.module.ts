@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PastheaderComponent} from 'src/app/past-event-module/pastheader/pastheader.component'
 
 const routes : Routes =  [{
-        path: '', component: PastheaderComponent 
+        path: 'pastEvent', component: PastheaderComponent 
     }]
 
 

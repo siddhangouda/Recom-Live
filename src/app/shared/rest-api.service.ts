@@ -10,10 +10,16 @@ export class RestApiService {
 
   consParam: any;
 
-  apiURL = "http://65.0.108.228:88/";
+  //  apiURL = "http://65.0.108.228:88/";
+  // apiURL = "http://192.168.0.113:80/";
+  apiURL = "https://apijango.events.recommerceeco.com/";
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+      // 'Content-Type': 'multipart/form-data',
+
+      
       // 'Access-control-Allow-Headers' :'Content-Type',
       // 'Access-Control-Allow-Origin': '*',
     })
@@ -59,10 +65,11 @@ export class RestApiService {
   }
 
   // with id 
-  getListbyCoupon(list, link,coupon ): any {
+  getListbyCoupon(list, link,coupon ,type): any {
     this.consParam = {
       "id": list,
-      "coupon_code" : coupon
+      "coupon_code" : coupon,
+      "event_type" : type
     }
     return this.restApi.post(this.apiURL + link, this.consParam, this.httpOptions)
       .pipe(
@@ -90,7 +97,17 @@ export class RestApiService {
   }
 
   postForm(link,values): any {
-    return this.restApi.post(this.apiURL + link, JSON.stringify(values), this.httpOptions)
+    console.log("value1", values)
+    return this.restApi.post(this.apiURL + link, values, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+
+  }
+  uploadForm(link,values): any {
+    console.log("value", values.getAll('value'))
+    return this.restApi.post(this.apiURL + link, values)
       .pipe(
         retry(1),
         catchError(this.handleError)

@@ -1,4 +1,19 @@
-<div class="col-sm-12" style="background: #f2f2f2;">
+<div class="row">
+
+<div class="col-sm-4 mobmargin">
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col sm-8">
+            <div class="row">
+            <img src="./assets/images/Hand_Shake.png" width="100%"></div>
+        <div class="row quote">  "Alone we can do so little; together we can do so much." - Helen Keller</div>
+    </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+<div class="col-sm-7" style="background: #f2f2f2;">
     <div class="gap">
     <form #partnership='ngForm' (ngSubmit) ="partnershipData(partnership.value); partnership.reset()">
         <div class="form-row">
@@ -92,7 +107,7 @@
             <!-- email field validator  -->
             <div class="col">
                 <input type="text" class="form-control" placeholder="Email" name="vc_email" [(ngModel)]="email"
-                    #emailValidator="ngModel" required minlength="5" maxlength="30" email>
+                    #emailValidator="ngModel" required minlength="5" maxlength="30" pattern="^[a-z0-9_.%+-]+@[a-z0-9-]+\.[a-z]{2,4}$" email>
 
                 <div class="form-control-feedback" *ngIf="emailValidator.invalid && emailValidator.touched">
                     <div *ngIf="emailValidator.errors.required">
@@ -101,7 +116,7 @@
                     <div *ngIf="emailValidator.errors.minlength">
                         *Must be at least 5 characters long.
                     </div>
-                    <div *ngIf="emailValidator.errors.email">
+                    <div *ngIf="emailValidator.errors.pattern">
                         *email should be like @companyName.com
                     </div>
                 </div>
@@ -188,3 +203,4 @@
 
 </div>
 
+</div>

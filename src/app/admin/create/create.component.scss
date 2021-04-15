@@ -1,0 +1,27 @@
+input {
+    margin: 10px;
+}
+
+textarea {
+    margin: 10px;
+    width: 80%;
+}
+
+.container1 {
+    width: 97%;
+    margin-left: 10px;
+}
+
+
+input {
+    margin: 0px;
+    color: #3670a1;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #3670a1;
+    opacity: 1; /* Firefox */
+  }
+
+  label {
+      color: #217b85;
+  }

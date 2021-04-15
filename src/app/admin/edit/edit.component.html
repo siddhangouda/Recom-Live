@@ -1,0 +1,51 @@
+<div class="container">
+<div class="row">
+<div class="col-sm-6 text-center">
+<h3>Edit Master Event</h3></div><div class="col-sm-6"><button (click)="editmaster(masterId)" class="button"> Edit Master Event </button></div></div>
+
+<div class="row">
+
+<div class="col-sm-6">
+<h3>Child Event </h3> </div> 
+
+<div class="col-sm-6">
+    <button (click)="addChild(masterId)" class="button">Add Child Event</button>
+</div>
+ 
+</div>
+
+<div class="row text-center">
+    <form  [formGroup]="selectChildForm">
+       
+    <table>
+        <div formArrayName="row">
+        <tr>
+        <th>Event ID</th>
+        <th>Event Name</th>
+        <th>RegistrationTotal Physical </th>
+        <th>RegistrationTotal Virtual</th>
+        <th>Description</th>
+        <th>Update</th>
+        <th>Edit Event Data</th>
+        <th>Delete Event</th>
+        </tr>          
+        <tr  [formGroupName]="i" *ngFor="let child of childList ; index as i" >
+     
+      
+        <td>{{child.id}}</td>
+        <td><input type="text" formControlName="vc_event_title"  ></td>
+        <td><input type="number" formControlName="db_registrationTotal_physical" placeholder="{{child.db_registrationTotal_physical}}" ></td>
+        <td><input type="number" formControlName="db_registrationTotal_virtual" placeholder="{{child.db_registrationTotal_virtual}}" ></td>
+        <td><input formControlName="vc_description" placeholder="{{child.vc_description}}" ></td>
+        <td><button type="submit" class="button" (click)="selectChild(i)">Update</button></td>
+        <td><button (click)="deleteChild(i)" class="button">delete</button></td>
+        <td><button (click)="editChild(child.id)" class="button">Edit</button></td>
+    
+
+    </tr>
+</div>
+    </table>
+
+</form>
+</div>
+</div>

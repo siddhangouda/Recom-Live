@@ -1,0 +1,62 @@
+<div class="container-fluid " id="advisory">
+    <div class="col-sm-12 text-center" >
+        <h1 style="background-color: #2c707a;padding-bottom: 40px;padding-top: 40px;color: white;font-weight: 500;" >Executive Team</h1>
+
+    </div>
+    <div class="row" *ngFor="let item  of details">
+        <div class="col-sm-6">
+       
+    <aside class="profile-card" >
+
+        <header>
+          
+          <!-- here’s the avatar -->
+          <a >
+            <img src="{{item.vc_profile_img}}">
+          </a>
+      
+          <!-- the username -->
+          <h1>{{item.vc_full_name}}</h1>
+          
+          <!-- and role or location -->
+          <h2>{{item.vc_full_designation}}</h2>
+          
+        </header>
+        
+        <!-- bit of a bio; who are you? -->
+        <div class="profile-bio">
+          
+          <p>{{item.vc_full_description}}</p>
+          
+        </div>
+        
+        <!-- some social links to show off -->
+        <ul class="profile-social-links text-center" >
+ 
+         
+          <!-- twitter - el clásico  -->
+        
+          <!-- envato – use this one to link to your marketplace profile -->
+          <li>
+            <a href="{{item.vc_linkedin}}">
+             <img src="../../../assets/images/LI-In-Bug.png">
+            </a>
+          </li>
+          
+          <!-- codepen - your codepen profile-->
+          <!-- <li>
+            <a href="https://codepen.io/tutsplus">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-codepen.svg">
+            </a>
+          </li> -->
+          
+          <!-- add or remove social profiles as you see fit -->
+          
+        </ul>
+        
+      </aside>
+    </div>
+      
+</div>
+</div>
+

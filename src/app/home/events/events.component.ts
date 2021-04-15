@@ -33,8 +33,8 @@ export class EventsComponent implements OnInit {
     forkJoin([this.upcomingAPI, this.pastAPI]).subscribe(responce => {
       this.upcomingData = responce[0];
       this.pastData = responce[1];
-      console.log(this.upcomingData = this.upcomingData.upcoming_events)
-      console.log(this.pastData = this.pastData.past_events)
+      this.upcomingData = this.upcomingData.upcoming_events
+      this.pastData = this.pastData.past_events
 
     })
 
@@ -45,16 +45,14 @@ export class EventsComponent implements OnInit {
     this.router.navigate(['/ourevents'], { queryParams: { selected: selectedValue} });
   }
 
-  goToEvent(id){
-    this.encodedId = id;
-    console.log("encode", btoa(this.encodedId));
-    this.router.navigate(['/events'], { queryParams: { redierectTo: btoa(this.encodedId) } });
+  goToEvent(urlId){
+    // this.encodedId = id;
+    // console.log("encode", btoa(this.encodedId));
+    this.router.navigate(['/events',urlId]);
   }
 
-  goToPastEvent(id){
-    this.encodedId = id;
-    console.log("encode", btoa(this.encodedId));
-    this.router.navigate(['/past-event-module'], { queryParams: { redierectTo: btoa(this.encodedId) } });
+  goToPastEvent(urlId){
+    this.router.navigate(['/pastEvents',urlId]);
   }
 
 

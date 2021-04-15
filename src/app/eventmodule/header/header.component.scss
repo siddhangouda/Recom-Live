@@ -1,87 +1,198 @@
-.sticky{
+.active1 {
+    background-color: #6c8d38 !important;
+    color:white;
+    }
+    .sticky{
     position: fixed;
     top: 0;
     overflow: hidden;
     z-index: 10;
     width: 100%;
-  }
-
-.block :nth-child(odd) {
-    background: #a14d6d;
+    }
+    
+    .block :nth-child(odd) {
+    background: #4f7fa1;
     padding: 20px;
     color: white;
-}
-
-.block :nth-child(even) {
-    background: rgb(178, 32, 64);
+    }
+    
+    .block :nth-child(even) {
+    background: #4f7fa1 ;
     color: white;
     padding: 20px;
-}
-
-.bg-dark {
-color : #cdcdcd !important; 
-
-}
-.nav-link {
-    color: #010101 !important 
-
-}
-.nav-item {
+    }
+    
+    
+    .bg-dark {
+    color : #cdcdcd !important;
+    
+    }
+    .nav-link {
+    color: #010101 !important
+    
+    }
+    .nav-item {
     text-indent: 0px !important;
-}
-
-img {
+    }
+    
+    img {
     width: 100%;
     height: auto;
-  }
-
-  .scrollbar{
-      background:#9f9f9fa6;
-      color: white;
-  }
-
-  :host ::ng-deep .p-button {
+    }
+    
+    .scrollbar{
+    background:#009bff;
+    color: white;
+    }
+    
+    :host ::ng-deep .p-button {
     margin: 0 .5rem 0 0;
     min-width: 10rem;
-}
-
-p {
+    }
+    
+    p {
     margin: 0;
-}
-
-.confirmation-content {
+    }
+    
+    .confirmation-content {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-:host ::ng-deep .p-dialog .p-button {
+    }
+    
+    :host ::ng-deep .p-dialog .p-button {
     min-width: 6rem;
-}
-
-input {
-
+    }
+    
+    input {
+    
     margin-top: 20px;
-}
-
-.btn {
+    }
+    
+    .btn {
     margin: 10px;
     background-color: #056969bf;
-}
-.header {
+    }
+    .header {
     padding: 20px 40px 40px 40px;
     color: #050d69c4;
     background: #ffffff21;
     font-weight: 600;
     font-size: 34px;
-}
-
-
-
-i {
+    }
+    
+    
+    
+    i {
     font-size: 25px;
     color: #050d69c4;
-}
-.blue {
+    }
+    .blue {
     color :#050d69c4
-}
+    }
+    
+    .ul1{
+    float: left
+    }
+    
+    
+    .mar {
+    margin-left: 20px;
+    }
+    
+    
+    @media screen and (device-aspect-ratio: 3 / 4){
+    .ul1{
+    float: left
+    }
+    .imgbk{
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    }
+    }
+    
+    @media only screen and (max-width: 600px) {
+    .mar {
+    margin-left: initial;
+    }
+    
+    .ul1{
+    float: none
+    }
+    .header{
+    margin-top: -35px !important;
+    margin-bottom: 0px !important;
+    font-size: 16px;
+    margin-left: -12px !important;
+    padding-bottom: 0px !important;
+    }
+    .blue{
+    margin-left: -17px !important;
+    font-size: 12px;
+    
+    }
+    .pi-map-marker,.pi-calendar-plus{
+    font-size: 12px;
+    }
+    input{
+    width: 100%;
+    }
+    .li1{
+    margin : 10px !important;
+    display: inline !important;
+    padding: 10px !important;
+    }
+    
+    
+    
+    .imgbk{
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    }
+    .col-sm-7 {
+    position: relative;
+    width: 100%;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    }
+    .col-sm-12{
+    padding-right: 4px !important;
+    padding-left: 11px !important;
+    }
+    
+    }
+    
+
+    ul.main {
+
+        list-style: none;
+        
+        }
+        
+        .css ol li {
+        list-style-type: none;
+        padding: 5px;
+        }
+        
+        ul.main .js li {
+        
+        text-align: center;
+        
+        list-style-position:inside;
+        background-color:white;
+        }
+        
+        .css i {
+        align-self: center;
+        font-size: 15px;
+        color: #0B5AA2;
+        font-weight: bold;
+        animation: icon 1.5s infinite forwards;
+        }
+        
+        @media only screen and (max-width: 600px) {
+        ul.main {
+        margin-left: -30px;
+        }
+        
+        }

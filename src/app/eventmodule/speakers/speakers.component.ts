@@ -12,12 +12,10 @@ export class SpeakersComponent implements OnInit {
   name :any;
   img : any;
   discription :any;
-  about :any;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.speakersData);
   }
 
     showDialog(i) {
@@ -25,9 +23,6 @@ export class SpeakersComponent implements OnInit {
         this.name = this.speakersData[i].vc_speaker_name; 
         this.discription = this.speakersData[i].vc_designation;
         this.img = this.speakersData[i].vc_img_link;
-        this.about = this.speakersData[i].vc_about_speaker
-
-        console.log(i)
+        
     }
-
 }

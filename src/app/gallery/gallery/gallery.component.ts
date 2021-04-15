@@ -16,10 +16,8 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
 
     this.restAPI.getList('gallery/').subscribe(res => {
-      console.log(res);
       this.galleryData = res.gallary;
-      this.mainBg = res.gallary[7].images;
-      console.log(this.mainBg);
+      this.mainBg = res.gallary[18].images;
     })
 
   }

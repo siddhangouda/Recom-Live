@@ -1,11 +1,31 @@
-.aboutheader{
-    color: white;
-    padding: 20px;
-    font-weight: 700;
-    padding-top: 50px;
+.about_event{
+    text-align: center;
+    margin: 40px;
+}
+
+h2{
+   text-align: center; 
+   margin-top: 0px !important;
+   padding-top: 0px !important;
 }
 
 p{
     padding: 20px;
-    color: white;
+color: black;
+}
+
+.about{
+    font-size: 16px !important;
+    font-weight: 400 !important;   
+    margin: 0px !important;
+    padding: 0px !important;
+    color:#156d95;
+}
+.event{
+    padding: 0px !important;
+    margin: 0px !important;
+    padding-top: 0px !important;
+    font-size: 50px !important;
+    font-weight: 700;    
+    color:#156d95;
 }

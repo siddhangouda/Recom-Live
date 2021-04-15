@@ -7,10 +7,10 @@
 </div>
 
 <div class="row">
-<div class="col-sm-3 " *ngFor="let partner of ourPartnersData" >
+<div class="col-sm-15 col-sm3" *ngFor="let partner of ourPartnersData" >
 
-    <div class="card ">
-        <img class="card-img-top" src="{{partner.vc_partner_logo_link}}" alt="Card image cap"  style="width:100%;">
+    <div class="card "> <div class="card "><a href="{{partner.vc_partner_website_url}}" target="blank" rel="nofollow">
+        <img class="card-img-top" src="{{partner.vc_partner_logo_link}}" alt="Card image cap"  style="width:100%;"></a>
      </div>
 </div>
 </div>

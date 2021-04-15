@@ -10,12 +10,18 @@
             <div class="img-container">
                 <img src="{{past.vc_backgroundImage}}" alt="Avatar" class="image" width="100%">
                 <div class="centered text-center"></div>
-                <div class="middle">
-                    <button type="button" class="btn btn-info" (click)="goToPastEvent(past.id)"> Explore </button>
+
+                
+
+                <div class="middle" *ngIf = "past.old_url">
+                    <a  class="btn btn-info" href="{{past.old_url}}"> Explore</a>
+                </div>
+
+                <div class="middle" *ngIf = "!past.old_url">
+                    <button type="button" class="btn btn-info" (click)="goToPastEvent(past.event_url_id)"> Explore</button>
                 </div>
             </div>
-        </div>
-       
+        </div>     
     </div>
 
 </div>

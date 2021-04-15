@@ -18,14 +18,12 @@ export class UpcomingEventsComponent implements OnInit {
 
     this.restApi.getList('date_filter/upcomingall/').subscribe(responce =>{
       this.upcomingData = responce;
-      console.log(this.upcomingData = this.upcomingData.upcoming_events_all);
+      this.upcomingData = this.upcomingData.upcoming_events_all;
     })
   }
 
   goToEvent(id){
-    this.encodedId = id;
-    console.log("encode", btoa(this.encodedId));
-    this.router.navigate(['/events'], { queryParams: { redierectTo: btoa(this.encodedId) } });
+    this.router.navigate(['/events',id]);
   }
 
 

@@ -1,31 +1,34 @@
 <div class="container-fluid" *ngFor="let eventData of eventData">
 
     <div class="row scrollbar">
-        <marquee behavior="scroll" direction="left">Here is some scrolling text... right to left!</marquee>
+        <marquee behavior="scroll" direction="left">{{eventData.news}}</marquee>
     </div>
-
-    <div class="row "
+    <div class="container-fluid"
         [ngStyle]="{ 'background-image': 'url(' +eventData.vc_eventBanner+ ')' ,'background-size' : 'cover' }">
 
-        <div class="col-sm-7 ">
-            <div class="gap"></div>
+        <div class="row">
+            <div class="col-sm-7 ">
+                <div class="gap"></div>
 
-            <h1 class="header text-left ml-4"> {{eventData.vc_main_title }}</h1>
-            <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-map-marker"></i> {{eventData.vc_event_location}}
-            </h5>
-            <h5 class="text-left ml-4 pl-5 blue my-3"><i class="pi pi-calendar-plus"></i>
-                {{eventData.vc_event_location}}</h5>
-            <div class="gap"></div>
-            <div class="gap"></div>
+                <h1 class="header text-left ml4"> {{eventData.vc_main_title }}</h1>
+                <h5 class="text-left ml4 pl-5 blue my-3"><i class="pi pi-map-marker"></i>
+                    {{eventData.vc_event_location}}
+                </h5>
+                <h5 class="text-left ml4 pl-5 blue my-3"><i class="pi pi-calendar-plus"></i>
+                    {{eventData.event_date}}</h5>
+                <div class="gap"></div>
+                <div class="gap"></div>
+            </div>
         </div>
 
-        <div class="gap mt-5"></div>
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
+
+        <div class="gap10"></div>
+        <div class="row mar">
+            <!-- <div class="col-sm-"></div> -->
+            <div class="col-sm-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-drak">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
+                    <div class="" id="navbarNav">
+                        <ul class="navbar-nav ul1">
                             <li class="nav-item active">
                                 <p-button (click)="showPositionDialog('top','Agenda')" icon="pi pi-arrow-down"
                                     label="Agenda" styleClass="p-button-raised"></p-button>
@@ -36,13 +39,15 @@
                                 <p-button (click)="showPositionDialog('top','Brochure')" icon="pi pi-arrow-down"
                                     label="Brochure" styleClass="p-button-raised"></p-button>
                             </li>
+                        </ul>
+                        <ul class="navbar-nav ul1">
                             <li class="nav-item">
-                                <p-button (click)="showPositionDialog('top','Floor_Plan')" icon="pi pi-arrow-down"
+                                <p-button (click)="showPositionDialog('top','FloorPlan')" icon="pi pi-arrow-down"
                                     label="Floor Plan" styleClass="p-button-raised"></p-button>
                             </li>
                             <li class="nav-item">
                                 <p-button label="Post Show" styleClass="p-button-raised" icon="pi pi-arrow-down"
-                                    (click)="showPositionDialog('top','post_show')"></p-button>
+                                    (click)="showPositionDialog('top','postshow')"></p-button>
 
                             </li>
 
@@ -50,8 +55,9 @@
                     </div>
                 </nav>
             </div>
-        </div>
 
+
+        </div>
     </div>
 
 
@@ -62,11 +68,11 @@
         [style]="{width: '60vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
 
         <div class="container" style="background: white;">
-            <form #contactDetails="ngForm">
+            <form #contactDetails="ngForm" (ngSubmit)="downloadFile(contactDetails.value)">
                 <div class="row">
                     <!-- firstName validator  -->
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="First name" name="firstName"
+                        <input type="text" class="form-control" placeholder="First name" name="first_name"
                             [(ngModel)]="firstName" #firstNameValidator="ngModel" required minlength="3" maxlength="20"
                             pattern="[a-zA-Z ]{1,20}">
 
@@ -87,7 +93,7 @@
                     <!-- last name validator  -->
 
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Last name" name="lastName"
+                        <input type="text" class="form-control" placeholder="Last name" name="last_name"
                             [(ngModel)]="lastName" #lastNameValidator="ngModel" required minlength="3" maxlength="20"
                             pattern="[a-zA-Z ]{1,20}">
 
@@ -185,10 +191,13 @@
                             </div>
                         </div>
                     </div>
+                    <input type="text" class="form-control" placeholder="" name="register_for" [(ngModel)]="selected"
+                        #cityValidator="ngModel" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{1,20}" hidden>
                 </div>
                 <div class="row text-center mt-3">
                     <div class="col-sm-12">
-                        <p-button label="Submit to Download" styleClass="p-button" (click)="downloadFile()"></p-button>
+                        <p-button type="submit" label="Submit to Download" styleClass="p-button"
+                            [disabled]="!contactDetails.valid"></p-button>
                     </div>
                 </div>
             </form>
@@ -198,50 +207,88 @@
 
     <!-- pop-up form ends -->
     <div class="gap"></div>
-    <app-aboutevent [aboutBg]=eventData.about_bg>
+    <app-aboutevent [aboutBg]=eventData.about_bg [disc]=eventData.vc_description>
     </app-aboutevent>
 
 
-    <section [class.sticky]="sticky" #stickyMenu *ngIf = "childEventsData.length > 1">
+    <section #stickyMenu [class.sticky]="sticky"  *ngIf="childEventsData.length > 1" >
         <div class="gap"></div>
         <div class="row block text-center">
-          <div class="col-sm" *ngFor="let childData of childEventsData index as i" (click)="selectEvent(i)">
-    
-            {{childData.vc_event_title}}
-    
-          </div>
-        </div>
-    
-      </section>
+            <div class="col-sm" *ngFor="let childData of childEventsData index as i" (click)="selectEvent(i)">
 
-    <div class="container-fluid" style="background: #faf9f9">
-        <div class="row">
-            <div class="col-sm-5 text-center">
-                <app-supportedby [supportedByData]=supportedByData></app-supportedby>
-            </div>
-            <div class="col-sm-5 text-center">
-                <app-ourpartners [ourPartnersData]=ourPartnersData></app-ourpartners>
+                {{childData.vc_event_title}}
+
             </div>
         </div>
-    </div>
 
+    </section>
+</div>
+    <div class="container-fluid" style="background: #f8f9fa!important" *ngIf="supportedByData.length >= 1">
+        <div class="gap"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <app-supportedby [supportedByData]=supportedByData *ngIf="supportedByData.length >= 1">
+                    </app-supportedby>
+                </div>
 
-    <div class="container-fluid" style="background: #faf9f9">
-        <div class="container border1">
-            <app-speakers [speakersData]=speakersData></app-speakers>
+            </div>
         </div>
     </div>
 
-
-    <div class="container-fluid" style="background: #faf9f9">
-        <div class="row">
-            <div class="col-sm-5 text-center">
-                <app-associations [associationsData]=associationsData></app-associations>
-            </div>
-                <div class="col-sm-5 text-center">
-                    <app-media-partners [mediaData]=mediaData></app-media-partners>
+    <div class="container-fluid" style="background: #ffffff" *ngIf="ourPartnersData.length >= 1">
+        <div class="gap"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <app-ourpartners [ourPartnersData]=ourPartnersData *ngIf="ourPartnersData.length >= 1">
+                    </app-ourpartners>
                 </div>
             </div>
+            <div class="gap"></div>
         </div>
-    
-</div>
+    </div>
+
+
+    <div class="container-fluid" style="background: #f8f9fa!important" *ngIf="speakersData.length >= 1">
+        <div class="gap"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <app-speakers [speakersData]=speakersData *ngIf="speakersData.length >= 1"></app-speakers>
+                </div>
+            </div>
+            <div class="gap"></div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid" style="background: #ffffff" *ngIf="associationsData.length >= 1">
+        <div class="gap"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <app-associations [associationsData]=associationsData *ngIf="associationsData.length >= 1">
+                    </app-associations>
+                </div>
+            </div>
+            <div class="gap"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="background: #f8f9fa!important" *ngIf="mediaData.length >= 1">
+        <div class="gap"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <app-media-partners [mediaData]=mediaData *ngIf="mediaData.length >= 1"></app-media-partners>
+                </div>
+            </div>
+            <div class="gap"></div>
+        </div>
+    </div>
+
+
+
+

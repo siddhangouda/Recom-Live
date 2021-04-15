@@ -16,7 +16,7 @@ export class AlleventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe(param => {
-      console.log()
+      
       if (param.selected == "past") {
         this.upComing = false;
         this.past = true;

@@ -26,7 +26,6 @@ export class PartnershipComponent implements OnInit {
   }
 
   partnershipData(value){
-    console.log(JSON.stringify(value));
     this.restAPI.postForm('partnership_register/',value).subscribe(res =>{
       alert(res);
     })

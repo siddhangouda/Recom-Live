@@ -1,0 +1,164 @@
+
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-sm-6">
+    
+</div>
+
+<div class="col-sm-6">
+    <button (click)="addNew(childId)">Add</button>  
+</div>
+</div>
+
+
+<button (click)="switch(asso)">Association</button>
+
+<button (click)="switch(speaker)">speaker</button>
+<button (click)="switch(partner)">Partner</button>
+<button (click)="switch(support)">Supported By</button>
+<button (click)="switch(media)">Media Partners</button>
+
+
+<div [ngSwitch]="selected">
+
+    <div *ngSwitchCase="asso">
+
+        <div class="row">
+          
+            <form [formGroup]="associationForm">
+           
+                <div formArrayName="row">
+                    <div class="col-sm-3" [formGroupName]="i" *ngFor="let asso of associationList; index as i">
+
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="{{asso.vc_img_url}}" alt="Card image cap">
+                            <input type="file" (change)="assoFileChange($event)"
+                                accept="image/x-png,image/gif,image/jpeg">
+                            <div class="card-body">
+                                <h5 class="card-title"><input type="text" formControlName="ch_name"
+                                        placeholder="{{asso.ch_name}}"></h5>
+                                <p class="card-text"><input type="text" formControlName="vc_link"
+                                        placeholder="{{asso.vc_link}}"></p>
+                                <button class="btn btn-primary" (click)="updateAssociation(i)">Update</button>
+                                <button class="btn btn-primary" (click)="deleteAssociation(asso.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="speaker">
+        <div class="row">
+
+            <form [formGroup]="speakerForm">
+                <div formArrayName="row">
+                    <div class="col-sm-3" [formGroupName]="i" *ngFor="let speaker of speakerList; index as i">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="{{speaker.vc_img_link}}" alt="Card image cap">
+                            <input type="file" (change)="updateSpeakerImage($event)"
+                                accept="image/x-png,image/gif,image/jpeg">
+                            <input type="file" (change)="updatePresentation($event)">
+                            <div class="card-body">
+                                <h5 class="card-title"><input type="text" formControlName="vc_speaker_name"
+                                        placeholder="{{speaker.vc_speaker_name}}"></h5>
+                                <h5 class="card-title"><input type="text" formControlName="vc_designation"
+                                        placeholder="{{speaker.vc_designation}}"></h5>
+                                <h5 class="card-title"><input type="text" formControlName="vc_linkedin_link"
+                                        placeholder="{{speaker.vc_linkedin_link}}"></h5>
+                                <h5 class="card-title"><input type="text" formControlName="vidio_url"
+                                        placeholder="{{speaker.vidio_url}}"></h5>
+                                <p class="card-text"><textarea type="text" formControlName="vc_about_speaker"
+                                        placeholder="{{speaker.vc_about_speaker}}"></textarea></p>
+
+                                <button class="btn btn-primary" (click)="updateSpeaker(i)">Update</button>
+                                <button class="btn btn-primary" (click)="deleteSpeaker(speaker.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div *ngSwitchCase="partner">
+        <div class="row">
+            <form [formGroup]="partnerForm">
+                <div formArrayName="row">
+                    <div class="col-sm-3" [formGroupName]="i" *ngFor="let partner of partnerList; index as i">
+                        <div class="card">
+                            <img class="card-img-top" src="{{partner.vc_partner_logo_link}}" alt="Card image cap">
+                            <input type="file" (change)="uploadPartner($event)"
+                                accept="image/x-png,image/gif,image/jpeg">
+                            <div class="card-body">
+                                <h5 class="card-title"><input type="text" formControlName="vc_partner_name"></h5>
+                                <h5 class="card-title"><input type="text" formControlName="vc_partner_website_url"></h5>
+                                <select formControlName="vc_partner_type">
+                                    <option value="silver Partner" selected>Silver Partner</option>
+                                    <option value="Gold Partner">Gold Partner</option>
+                                    <option value="Associate Partner"> Associate Partner</option>
+                                    <option value="Diamond Partner"> Diamond Partner</option>
+                                </select><br>
+
+                                <button class="btn btn-primary" (click)="updatePartner(i)">Update</button>
+                                <button class="btn btn-primary" (click)="deletePartner(partner.id)">Delete</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="support">
+        <div class="row">
+            <form [formGroup]="supportForm">
+                <div formArrayName="row">
+                    <div class="col-sm-3" [formGroupName]="i" *ngFor="let support of supportList; index as i">
+                        <div class="card">
+                            <img class="card-img-top" src="{{support.vc_logo_link}}" alt="Card image cap">
+                            <input type="file" (change)="uploadSupporter($event)"
+                                accept="image/x-png,image/gif,image/jpeg">
+                            <div class="card-body">
+                                <h5 class="card-title"><input type="text" formControlName="vc_comapany_name"></h5>
+                                <h5 class="card-title"><input type="text" formControlName="vc_company_url"></h5>
+                                <button class="btn btn-primary" (click)="updateSupporter(i)">Update</button>
+                                <button class="btn btn-primary" (click)="deleteSupporter(support.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="media">
+        <div class="row">
+            <form [formGroup]="mediaForm">
+                <div formArrayName="row">
+                    <div class="col-sm-3" [formGroupName]="i" *ngFor="let media of mediaList; index as i">
+                        <div class="card">
+                            <img class="card-img-top" src="{{media.vc_logo_link}}" alt="Card image cap">
+                            <input type="file" (change)="uploadMedia($event)" accept="image/x-png,image/gif,image/jpeg">
+                            <div class="card-body">
+                                <h5 class="card-title"><input type="text" formControlName="vc_comapany_name"></h5>
+                                <h5 class="card-title"><input type="text" formControlName="vc_company_url"></h5>
+                                <button class="btn btn-primary" (click)="updateMedia(i)">Update</button>
+                                <button class="btn btn-primary" (click)="deleteMedia(media.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</div>

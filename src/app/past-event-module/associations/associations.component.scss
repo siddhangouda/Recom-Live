@@ -2,8 +2,15 @@
     border:0px;
 }
 
-.col-sm-2 {
+.col-sm-3 {
+    margin: auto !important;
 margin: 10px;
+}
+
+.col-sm-15 {
+    margin: auto !important;
+    margin-left: 13px !important;
+    margin-top: 10px !important;
 }
 
 .Pastheader {
@@ -12,4 +19,5 @@ margin: 10px;
     padding: 0.5rem;
     color: white;
     border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
 }

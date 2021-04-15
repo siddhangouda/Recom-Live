@@ -1,0 +1,80 @@
+
+<div class="row" >
+    <div class="col-sm-3 mrg" >
+    <div class="gap"></div>
+    
+    
+    <ul>
+    <li style="margin-top: 20px;" [ngClass]="{'active': tabIndex === 0}" (click)="directors(0)">
+    &nbsp;&nbsp;Directors
+    </li>
+    
+    <li [ngClass]="{'active': tabIndex === 1}" (click)="advisory(1)">
+    &nbsp;&nbsp;Advisory Board
+    </li>
+    <!-- <li class="col-sm-12" [ngClass]="{'active': tabIndex === 2}" (click)="advisory(2)">
+    Leadership Team
+    </li> -->
+    </ul>
+    
+    
+    
+    </div>
+    <div class="col-sm-9" >
+    
+    <div class="row rr" [hidden]="Advisory_status" >
+    <div class="col-sm-12 text-center hed" >ADVISORY BOARD</div>
+    <p-dialog [header]="name" [(visible)]="display" position="right" [transitionOptions]="'600ms'" [style]="{width: '73vw',background:'white'}">
+    <div class="mt-2">
+    <h6><b>{{designation}}</b></h6>
+    </div>
+    
+    <p class="disc">{{discription}}</p>
+    </p-dialog>
+    <div class="col-sm-3 mt-4" *ngFor="let item of details">
+    <a (click)="showDialog(item.vc_full_description,item.vc_full_designation,item.vc_full_name)">
+    <div class="card" >
+    
+    <img class="" src="{{item.vc_profile_img}}" alt="Avatar" height="180px" >
+    
+    <div class="container" height="300px">
+    <p class="fullname" >{{item.vc_full_name|uppercase }}</p>
+    <div>
+    <a href="{{item.vc_linkedin}}" target="blank"><i class="fa fa-linkedin" aria-hidden="true"></i>
+    </a>
+    </div>
+    </div>
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="row rr" [hidden]="directors_status">
+    <div class="col-sm-12 text-center hed" >DIRECTORS</div>
+    <p-dialog [header]="name" [(visible)]="display" position="right" [transitionOptions]="'600ms'" [style]="{width: '73vw',background:'white'}">
+    <h6><b>{{designation}}</b></h6>
+    <p class="disc">{{discription}}</p>
+    </p-dialog>
+    <div class="col-sm-4 mt-4"*ngFor="let item of details_director">
+    <a (click)="showDialog(item.vc_full_description,item.vc_full_designation,item.vc_full_name)">
+    <div class="card" >
+    
+    <img src="{{item.vc_profile_img}}" alt="Avatar" height="250px">
+    
+    <div class="container1" height="200px">
+    
+    <p class="fullname1" >{{item.vc_full_name|uppercase }}</p>
+    
+    <a href="{{item.vc_linkedin}}" target="blank"><i class="fa fa-linkedin" aria-hidden="true"></i>
+    </a>
+    </div>
+    </div>
+    </a>
+    </div>
+    
+    
+    </div>
+    
+    
+    
+    </div>
+    </div>

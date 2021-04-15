@@ -1,0 +1,67 @@
+
+.form-check-label {
+
+    font-weight: 600;
+    }
+    
+    label{
+    color:#5e5e5e;
+    font-weight: 500;
+    
+    }
+    .bk{
+    margin-left: 40px;
+    width: 93%;
+    }
+    .txtar{
+    border: 1px solid rgb(247, 243, 243);border-radius: 4px;margin-right: 60px;
+    }
+    
+    @media screen and (max-width: 640px){
+    .form-check-input,.form-check-label {
+    width: auto !important;
+    margin-left: -10px !important;
+    font-weight: 600;
+    }
+    .txtar{
+    margin-right: auto;
+    }
+    .ml-4{
+    margin-left: 0px !important;
+    }
+    
+    
+    .bk{
+    margin-left: auto;
+    width: 100%;
+    }
+    }
+    .col-sm-10{
+    padding-left: initial;
+    }
+    
+    
+    
+    
+    
+    /***** CODE *****/
+    
+    .file-upload{
+    width: 100%;
+    margin-right: -15px !important;
+    display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
+    .file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+    .file-upload .file-select .file-select-button{background:#dce4ec;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+    .file-upload .file-select .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+    .file-upload .file-select {border-color:#34495e;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+    .file-upload .file-select .file-select-button{background:#34495e;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+    .file-upload.active .file-select{border-color:#3fa46a;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+    .file-upload.active .file-select .file-select-button{background:#3fa46a;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+    .file-upload .file-select input[type=file]{z-index:100;cursor:pointer;position:absolute;height:100%;width:100%;top:0;left:0;opacity:0;filter:alpha(opacity=0);}
+    .file-upload .file-select.file-select-disabled{opacity:0.65;}
+    .file-upload .file-select.file-select-disabled:hover{cursor:default;display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;margin-top:5px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+    .file-upload .file-select.file-select-disabled:hover .file-select-button{background:#dce4ec;color:#666666;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+    .file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+    
+    
+    

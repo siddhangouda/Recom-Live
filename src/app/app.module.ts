@@ -19,6 +19,7 @@ import {ScrollTopModule} from 'primeng/scrolltop';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import { RippleModule } from 'primeng/ripple';
+import { AuthGuardGuard } from './shared/auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -38,14 +39,14 @@ import { RippleModule } from 'primeng/ripple';
     FormsModule,
     HttpClientModule,
     AboutModule,
-    // PastEventModuleModule,
+    PastEventModuleModule,
     SharedModule,ScrollTopModule,
     ToastModule,
     RippleModule
     
  
   ],
-  providers: [],
+  providers: [AuthGuardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

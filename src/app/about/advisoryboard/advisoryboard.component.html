@@ -1,0 +1,67 @@
+
+<div class="container-fluid " id="advisory">
+    <div class="col-sm-12 text-center" >
+    <h1 style="background-color: #2c707a;padding-bottom: 40px;padding-top: 40px;color: white;font-weight: 500;" >Advisory Board</h1>
+    <!-- <div class="col-sm-12 text-center bac_head">
+    <p class="" style="color:rgb(49, 49, 129) ;">
+    <br>Despite unavoidable hurdles, we could put together, some great virtual webinars on Textile recycling and Food waste management, which got traction and attracted participants globally.
+    The trust and values built in the partners could give us the confidence to put The first
+    The trust and values built in the partners could give us the confidence to put The first
+    The trust and values built in the partners could give us the confidence to put The first
+    dd partners could give us the confidence to put The first
+    </p>
+    
+    </div> -->
+    </div>
+    
+    
+    <div class="gap"></div>
+    <div class="row" style="margin-top: 20px;" *ngFor="let item of details; let even = even; let odd = odd;" [ngClass]="{ even: even, odd: odd }">
+    <div class="row" style="margin: 10px;" *ngIf="even==true">
+    <div class="col-sm-9 mt-5">
+    
+    <p style="color:cadetblue;margin-left: 20px;">
+    
+    {{item.vc_full_description}}
+    
+    <!-- <br>Despite unavoidable hurdles, we could put together, some great virtual webinars on Textile recycling and Food waste management, which got traction and attracted participants globally. The trust and values built in the partners could give us the confidence to put The first edition of Recommerce – Global Battery Recycling Conference hybrid(Physical and Virtual) brought together the decision-makers, investors, entrepreneurs, OEM’s, recyclers, scrap dealers, distributors and reverse logistics companies. The two-day conference discussed and debated battery recycling and repair, block chain technologies, entrepreneurship opportunities, environmental rules and safety standards, circular economy, end of life battery management, sustainability in EV transition and business models to help reduce th</p>
+    --> </div>
+    <div class="col-sm-3 text-center mt-3" > <img src="{{item.vc_profile_img}}" width="70%" height="70%">
+    <div style="
+    width: 75%;
+    margin-left: 35px;
+    margin-top: 5px;
+    
+    ">
+    <h5 style=" font-weight: bold;color: #884078;">{{item.vc_full_name}}</h5>
+    <p class="text-center" style="font-weight: 400" >{{item.vc_full_designation}}</p>
+    </div>
+    </div>
+    </div>
+    <div class="row" style="margin: 10px;" *ngIf="even==false">
+    
+    <div class="col-sm-3 text-center mt-4" > <img src="{{item.vc_profile_img}}" width="70%" height="70%">
+    <div style="
+    width: 70%;
+    margin-left: 35px;
+    margin-top: 5px;
+    ">
+    <h5 style=" font-weight: bold;color: #884078;">{{item.vc_full_name}}</h5>
+    <h6>{{item.vc_full_designation}}</h6>
+    </div>
+    </div>
+    <div class="col-sm-9 mt-5" >
+    
+    <p class="mr-4" style="color:cadetblue;">
+    
+    {{item.vc_full_description}}
+    </p>
+    <!-- <br>Despite unavoidable hurdles, we could put together, some great virtual webinars on Textile recycling and Food waste management, which got traction and attracted participants globally. The trust and values built in the partners could give us the confidence to put The first edition of Recommerce – Global Battery Recycling Conference hybrid(Physical and Virtual) brought together the decision-makers, investors, entrepreneurs, OEM’s, recyclers, scrap dealers, distributors and reverse logistics companies. The two-day conference discussed and debated battery recycling and repair, block chain technologies, entrepreneurship opportunities, environmental rules and safety standards, circular economy, end of life battery management, sustainability in EV transition and business models to help reduce th</p>
+    --> </div>
+    </div>
+    
+    </div>
+    
+    
+    
+    </div>

@@ -25,4 +25,26 @@ font-size: 14px;
     color: #590707;
 }
 
+.quote {
+    color: #5e5e5e;
+    margin-top: 37px;
+}
+@media screen and (max-width: 600px) {
+    .col-sm-2 {
+        max-width: 100%;
+        width: 100% !important;
+    }
+    .tearm{
 
+        width: 20% !important;
+        padding-top: 10x !important;
+        margin-top: 10px;
+        text-align: left !important;
+    }
+    .tearm1{
+
+        width: 80%;
+        padding-top: 10x !important;
+        margin-top: 10px;
+    }
+    }

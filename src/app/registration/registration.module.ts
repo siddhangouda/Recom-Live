@@ -11,11 +11,12 @@ import { VertualComponent } from './vertual/vertual.component';
 import {DialogModule} from 'primeng/dialog';
 import {ToastModule} from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpeakerComponent } from './speaker/speaker.component';
 
 
 
 @NgModule({
-  declarations: [AllFormsComponent, PartnershipComponent, ExhibitionComponent, CoferenceComponent, VisitorComponent, VertualComponent],
+  declarations: [AllFormsComponent, PartnershipComponent, ExhibitionComponent, CoferenceComponent, VisitorComponent, VertualComponent, SpeakerComponent],
   imports: [
     CommonModule,ButtonModule,FormsModule,DialogModule,ReactiveFormsModule,ToastModule, BrowserAnimationsModule
   ]

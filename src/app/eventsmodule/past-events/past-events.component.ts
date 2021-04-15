@@ -19,14 +19,12 @@ export class PastEventsComponent implements OnInit {
 
     this.restApi.getList('date_filter/pastall/').subscribe(responce =>{
       this.pastData = responce;
-      console.log(this.pastData = this.pastData.past_events_all);
+      this.pastData = this.pastData.past_events_all;
     })
   }
 
   goToPastEvent(id){
-    this.encodedId = id;
-    console.log("encode", btoa(this.encodedId));
-    this.router.navigate(['/pastEvent'], { queryParams: { redierectTo: btoa(this.encodedId) } });
+    this.router.navigate(['/pastEvents',id]);
   }
 
 }

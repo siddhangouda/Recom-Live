@@ -1,4 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
+import AOS from 'aos'
 
 @Component({
   selector: 'app-aboutevent',
@@ -9,9 +10,12 @@ export class AbouteventComponent implements OnInit {
 
 
   @Input() aboutBg :any;
+  @Input('disc') disc :any;
+
   constructor() { }
 
   ngOnInit(): void {
+    AOS.init()
   }
 
 }

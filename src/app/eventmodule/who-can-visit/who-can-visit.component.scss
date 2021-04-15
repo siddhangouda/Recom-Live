@@ -1,0 +1,33 @@
+ul.main {
+
+  list-style: none;
+  
+  }
+  
+  .css ol li {
+  list-style-type: none;
+  padding: 5px;
+  }
+  
+  ul.main .js li {
+  
+  text-align: center;
+  
+  list-style-position:inside;
+  background-color:white;
+  }
+  
+  .css i {
+  align-self: center;
+  font-size: 15px;
+  color: #0B5AA2;
+  font-weight: bold;
+  animation: icon 1.5s infinite forwards;
+  }
+  
+  @media only screen and (max-width: 600px) {
+  ul.main {
+  margin-left: -30px;
+  }
+  
+  }

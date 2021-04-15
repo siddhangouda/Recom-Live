@@ -50,4 +50,12 @@ sanitized(video)
   return this._sanitizer.bypassSecurityTrustResourceUrl(video)
 }
 
+downloadFile(i) {
+  const link = document.createElement('a');
+  link.setAttribute('target', '_blank');
+  link.setAttribute('href', this.speakersData[i].presentation);
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
 }

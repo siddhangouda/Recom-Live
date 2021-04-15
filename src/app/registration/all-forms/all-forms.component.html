@@ -12,29 +12,29 @@
 
         <div class="gap"></div>
         <!-- form selection  -->
-        <div class="container">
+    <div class="container">
         <div class="row text-center ">
             <div class="col-sm-4"></div>
 
-            <div class="col-sm-15 text-center" *ngIf="partnership">
+            <div class="col-sm-15mob col-sm-15 text-center" *ngIf="partnership">
                 <button pButton type="button" class="p-button-raised" label="Partnership"
-                    (click)="selectPartnership()"></button>
+                    (click)="selectPartnership();onClick(1)"   [ngClass]="{'active': tab==='tab1'}"></button>
             </div>
-            <div class="col-sm-15" *ngIf="exhibition">
+            <div class="col-sm-15mob col-sm-15" *ngIf="exhibition">
                 <button pButton type="button" class="p-button-raised" label="Exhibition"
-                    (click)="selectExhibition()"></button>
+                    (click)="selectExhibition();onClick(2)"   [ngClass]="{'active': tab==='tab2'}" ></button>
             </div>
-            <div class="col-sm-15" *ngIf="conference">
-                <button pButton type="button" class="p-button-raised" label="Coference"
-                    (click)="selectCoference()"></button>
+            <div class="col-sm-15mob col-sm-15" *ngIf="conference">
+                <button pButton type="button" class="p-button-raised" label="Delegate"
+                    (click)="selectCoference();onClick(3)"   [ngClass]="{'active': tab==='tab3'}" ></button>
             </div>
-            <div class="col-sm-15" *ngIf="visitor">
+            <div class=" col-sm-15mob col-sm-15" *ngIf="visitor">
                 <button pButton type="button" class="p-button-raised" label="Visitor"
-                    (click)="selectVisitor()"></button>
+                    (click)="selectVisitor();onClick(4)"   [ngClass]="{'active': tab==='tab4'}" ></button>
             </div>
-            <div class="col-sm-15" *ngIf="vertual">
-                <button pButton type="button" class="p-button-raised p-button-warning" label="VIRTUAL"
-                    (click)="selectVertual()"></button>
+            <div class="col-sm-15mob col-sm-15" *ngIf="vertual">
+                <button pButton type="button" class="p-button-raised" label="Virtual"
+                    (click)="selectVertual();onClick(5)"   [ngClass]="{'active': tab==='tab5'}"></button>
             </div>
 
         </div>
@@ -46,10 +46,11 @@
 
         <div class="gap"></div>
         <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-8">
+            
+            <div class="col-sm-12">
 
                 <div class="container-fluid" *ngIf="partnershipForm">
+                    
                     <app-partnership [id]=decodedId></app-partnership>
                 </div>
 

@@ -1,4 +1,8 @@
 
+ .active1 {
+    background-color: #2d6187 !important;
+    color:white;
+    }
 
 .sticky{
     position: fixed;
@@ -9,18 +13,20 @@
   }
 
 .block :nth-child(odd) {
-    background: #a14d6d;
+    background: #4f7fa1;
     padding: 20px;
     color: white;
 }
 
 .block :nth-child(even) {
-    background: rgb(178, 32, 64);
+    background: #4f7fa1 ;
     color: white;
     padding: 20px;
 }
 
-
+.ul1 {
+    float: left !important;
+}
 
 .bg-dark {
     color : #cdcdcd !important; 
@@ -93,3 +99,10 @@
     .col-sm-5{ 
         margin: 50px;
     }
+.ml4 {
+    margin-left: 1.5rem!important;
+}
+
+.mar {
+    margin-left: 0px;
+}

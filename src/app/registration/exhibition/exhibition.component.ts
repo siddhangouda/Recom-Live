@@ -25,7 +25,6 @@ export class ExhibitionComponent implements OnInit {
   }
 
   exhibitionData(value){
-    console.log(JSON.stringify(value));
     this.restAPI.postForm('exhibitor_register/',value).subscribe(res =>{
       alert(res);
     })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import AOS from 'aos'
 
 @Component({
@@ -8,7 +9,9 @@ import AOS from 'aos'
 })
 export class AboutheaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    
+  ) { }
 
   ngOnInit(): void {
     AOS.init();
