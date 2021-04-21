@@ -152,7 +152,9 @@ export class CoferenceComponent implements OnInit {
 
 
   conferenceData(value, form: NgForm) {
+    console.log("ssss",this.email)
     this.RAZORPAY_OPTIONS.prefill.email = this.email;
+    this.RAZORPAY_OPTIONS.prefill.name = this.firstName
     this.RAZORPAY_OPTIONS.prefill.contact = "91" + this.phone;
     this.restAPI.postForm('conference_register/', value).subscribe(res => {
       alert(res);
